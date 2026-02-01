@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { 
   motion, 
   AnimatePresence, 
@@ -22,10 +22,10 @@ import { LayoutTextFlip } from '@/components/ui/LayoutTextFlip.jsx'
 import { cn } from "@/lib/utils"
 
 /**
- * ⚡ RAFI'S ULTIMATE EMERALD PORTFOLIO - v4.0 (Always Top Dock)
- * - Navbar is now FIXED at the TOP for ALL devices.
- * - Tooltips animate DOWNWARDS to stay visible.
- * - Hero content pushed down to prevent overlap.
+ * ⚡ RAFI'S ULTIMATE EMERALD PORTFOLIO - v5.0 (Mobile Touch Fix)
+ * - Fixed "Sticky Hover" bug on mobile devices.
+ * - Added `whileTap` animation for better mobile feedback.
+ * - Optimized Navbar for all screen sizes.
  */
 
 const Home = () => {
@@ -46,12 +46,13 @@ const Home = () => {
       </div>
 
       {/* 🛠️ UNIVERSAL FLOATING DOCK (ALWAYS TOP) */}
-      <div className="fixed z-[100] left-0 right-0 top-4 md:top-6 flex justify-center px-4">
+      <div className="fixed z-[100] left-0 right-0 top-4 md:top-6 flex justify-center px-4 pointer-events-none">
+        {/* Pointer events auto enables clicks on the dock itself */}
         <MerkovaNavbar />
       </div>
 
       {/* 🧠 HERO CONTENT */}
-      {/* Added pt-32 (padding-top) so the Navbar doesn't cover the text */}
+      {/* Added pt-32 to push content down below the navbar */}
       <section className="relative z-10 flex min-h-screen flex-col justify-center items-start px-6 pt-32 pb-20 md:px-16 lg:px-24 xl:px-32 max-w-[1920px] mx-auto">
         <div className="w-full space-y-6 md:space-y-10">
           
@@ -64,7 +65,7 @@ const Home = () => {
           >
             Designing the <br />
             <span className="text-emerald-500 inline-block hover:scale-[1.02] transition-transform duration-500 cursor-default text-shadow-glow">Future</span> 
-            <span className="text-white/90"> of Web & Mobile Application.</span>
+            <span className="text-white/90"> of Web.</span>
           </motion.h1>
 
           {/* Flip Text Animation */}
@@ -82,7 +83,7 @@ const Home = () => {
                 text="" 
                 className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white whitespace-nowrap"
                 words={[
-              'Fullstack Developer',
+                  'Fullstack Developer',
                 'Frontend Engineer',
                 'Backend Engineer',
                 'UI/UX Visionary',
@@ -97,7 +98,9 @@ const Home = () => {
                 "React Native Developer",
                 "Mobile App Developer",
                 "Python Expert",
-                "Database Expert"
+                "Database Expert",
+                "Data Scientist",
+                "Ios Developer"
                 ]}
                 duration={2500}
               />
@@ -116,16 +119,16 @@ const Home = () => {
           </motion.p>
 
           {/* Actions */}
-           <motion.div
+          <motion.div
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4 md:gap-6 pt-4"
+            className="flex flex-col sm:flex-row gap-4 md:gap-6 pt-6"
           >
-            <button className="group relative overflow-hidden rounded-full bg-emerald-500 px-8 md:px-12 py-4 font-black text-black transition-all hover:scale-105 hover:bg-emerald-400 hover:shadow-[0_0_50px_rgba(16,185,129,0.6)]">
-              Explore Projects
+            <button className="group relative overflow-hidden rounded-full bg-emerald-500 px-8 py-3 md:px-12 md:py-4 font-black text-black transition-all hover:scale-105 hover:bg-emerald-400 hover:shadow-[0_0_40px_rgba(16,185,129,0.5)]">
+              <span className="relative z-10">Explore Projects</span>
             </button>
-            <button className="rounded-full border border-white/20 bg-white/5 px-8 md:px-12 py-4 font-bold text-white backdrop-blur-2xl transition-all hover:bg-white/10 hover:border-emerald-500/50">
+            <button className="rounded-full border border-white/20 bg-white/5 px-8 py-3 md:px-12 md:py-4 font-bold text-white backdrop-blur-md transition-all hover:bg-white/10 hover:border-emerald-500/50">
               Get in Touch
             </button>
           </motion.div>
@@ -149,7 +152,7 @@ const MerkovaNavbar = () => {
   ];
 
   return (
-    <nav className="flex items-center justify-center w-full max-w-fit">
+    <nav className="flex items-center justify-center w-full max-w-fit pointer-events-auto">
       <FloatingDock items={links} />
     </nav>
   );
@@ -173,6 +176,15 @@ const FloatingDock = ({ items }) => {
 
 function IconContainer({ mouseX, title, icon, href }) {
   let ref = useRef(null);
+  
+  // State to check if device supports hover (Mouse vs Touch)
+  const [isHoverable, setIsHoverable] = useState(false);
+  const [hovered, setHovered] = useState(false);
+
+  useEffect(() => {
+    // Only enable hover logic if the device actually supports it (Desktops)
+    setIsHoverable(window.matchMedia('(hover: hover)').matches);
+  }, []);
 
   let distance = useTransform(mouseX, (val) => {
     let bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
@@ -192,26 +204,29 @@ function IconContainer({ mouseX, title, icon, href }) {
     damping: 12,
   });
 
-  const [hovered, setHovered] = useState(false);
-
   return (
-    <a href={href} className="relative block">
+    <a 
+      href={href} 
+      className="relative block"
+      onClick={() => setHovered(false)} // Fix: Force clear hover state on click
+    >
       <motion.div
         ref={ref}
         style={{ width, height }}
-        onMouseEnter={() => setHovered(true)}
+        onMouseEnter={() => isHoverable && setHovered(true)} // Fix: Only hover if mouse exists
         onMouseLeave={() => setHovered(false)}
+        whileTap={{ scale: 0.9, backgroundColor: "#10b981", color: "black" }} // Mobile: Tap Effect
         className={cn(
-          "aspect-square flex items-center justify-center rounded-full transition-colors duration-300 cursor-pointer",
+          "aspect-square flex items-center justify-center rounded-full transition-colors duration-200 cursor-pointer",
           hovered 
             ? "bg-emerald-500 text-black shadow-[0_0_20px_rgba(16,185,129,0.5)]" 
-            : "bg-neutral-900/80 text-neutral-400 hover:bg-neutral-800 hover:text-white border border-white/5"
+            : "bg-neutral-900/80 text-neutral-400 border border-white/5"
         )}
       >
         <AnimatePresence>
           {hovered && (
             <motion.div
-              // Tooltip appearing BELOW the icon since nav is at top
+              // Tooltip appearing BELOW the icon
               initial={{ opacity: 0, y: 10, x: "-50%" }}
               animate={{ opacity: 1, y: 50, x: "-50%" }} 
               exit={{ opacity: 0, y: 10, x: "-50%" }}
