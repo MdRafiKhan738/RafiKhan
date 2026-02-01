@@ -66,7 +66,7 @@ const Home = () => {
             className="flex h-16 md:h-20 items-center overflow-hidden"
           >
             <LayoutTextFlip
-              text="Hi, I am Rafi. A"
+              text="Hi, I am Rafi. Worked as a "
               className="text-2xl ml-3 font-bold text-white md:text-4xl lg:text-5xl" // Changed to text-white
               words={[
                 'Fullstack Developer',
