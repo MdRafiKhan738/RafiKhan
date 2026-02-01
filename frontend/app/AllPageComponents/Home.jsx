@@ -1,15 +1,20 @@
 'use client'
 
 import React, { useRef, useState } from 'react'
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { 
+  motion, 
+  AnimatePresence, 
+  useMotionValue, 
+  useSpring, 
+  useTransform 
+} from 'framer-motion'
 import { 
   IconHome, 
   IconTerminal2, 
   IconBriefcase, 
   IconUser, 
   IconCurrencyDollar, 
-  IconMail, 
-  IconLayoutNavbarCollapse 
+  IconMail 
 } from "@tabler/icons-react";
 import Silk from '@/components/Silk'
 import RafiStars from '@/components/RafiStars'
@@ -17,8 +22,10 @@ import { LayoutTextFlip } from '@/components/ui/LayoutTextFlip.jsx'
 import { cn } from "@/lib/utils"
 
 /**
- * ⚡ RAFI'S ULTIMATE EMERALD PORTFOLIO - v2.0 (Merkova Standard)
- * Fixes: Overlap, Contrast, Responsiveness.
+ * ⚡ RAFI'S ULTIMATE EMERALD PORTFOLIO - v4.0 (Always Top Dock)
+ * - Navbar is now FIXED at the TOP for ALL devices.
+ * - Tooltips animate DOWNWARDS to stay visible.
+ * - Hero content pushed down to prevent overlap.
  */
 
 const Home = () => {
@@ -38,16 +45,17 @@ const Home = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#020617]" />
       </div>
 
-      {/* 🛠️ TOP NAVIGATION */}
-      <header className="fixed top-0 left-0 right-0 z-[100] flex justify-center p-4 md:p-6">
+      {/* 🛠️ UNIVERSAL FLOATING DOCK (ALWAYS TOP) */}
+      <div className="fixed z-[100] left-0 right-0 top-4 md:top-6 flex justify-center px-4">
         <MerkovaNavbar />
-      </header>
+      </div>
 
-      {/* 🧠 HERO CONTENT - Added pt-32 to prevent overlap */}
+      {/* 🧠 HERO CONTENT */}
+      {/* Added pt-32 (padding-top) so the Navbar doesn't cover the text */}
       <section className="relative z-10 flex min-h-screen flex-col justify-center items-start px-6 pt-32 pb-20 md:px-16 lg:px-24 xl:px-32 max-w-[1920px] mx-auto">
         <div className="w-full space-y-6 md:space-y-10">
           
-          {/* Headline - Responsive Font Sizes (Fluid Typography) */}
+          {/* Headline - Fluid Typography */}
           <motion.h1
             initial={{ opacity: 0, y: 35 }}
             animate={{ opacity: 1, y: 0 }}
@@ -55,21 +63,26 @@ const Home = () => {
             className="text-[11vw] sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold leading-[0.95] tracking-tighter text-white"
           >
             Designing the <br />
-            <span className="text-emerald-500 inline-block hover:scale-[1.02] transition-transform duration-500">Future</span> <span className="text-white/90">of Web & Mobile Application.</span>
+            <span className="text-emerald-500 inline-block hover:scale-[1.02] transition-transform duration-500 cursor-default text-shadow-glow">Future</span> 
+            <span className="text-white/90"> of Web & Mobile Application.</span>
           </motion.h1>
 
-          {/* Flip Text Animation - FIXED COLOR TO WHITE */}
+          {/* Flip Text Animation */}
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="flex h-16 md:h-20 items-center overflow-hidden"
+            className="flex flex-wrap items-center overflow-hidden gap-2 sm:gap-3"
           >
-            <LayoutTextFlip
-              text="Hi, I am Rafi. Worked as a "
-              className="text-2xl ml-3 font-bold text-white md:text-4xl lg:text-5xl" // Changed to text-white
-              words={[
-                'Fullstack Developer',
+            <span className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white/60">
+              Hi, I am Rafi. Worked as a
+            </span>
+            <div className="h-8 sm:h-12 md:h-16 overflow-hidden flex items-center">
+               <LayoutTextFlip
+                text="" 
+                className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white whitespace-nowrap"
+                words={[
+              'Fullstack Developer',
                 'Frontend Engineer',
                 'Backend Engineer',
                 'UI/UX Visionary',
@@ -85,25 +98,25 @@ const Home = () => {
                 "Mobile App Developer",
                 "Python Expert",
                 "Database Expert"
-              ]}
-              duration={2500}
-            />
+                ]}
+                duration={2500}
+              />
+            </div>
           </motion.div>
 
-          {/* Bio - Improved Readability */}
+          {/* Bio */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="max-w-2xl text-base leading-relaxed text-neutral-300 md:text-xl lg:text-2xl"
+            className="max-w-2xl text-sm sm:text-base md:text-xl lg:text-2xl leading-relaxed text-neutral-300"
           >
-            I craft <span className="text-emerald-400 font-medium">Ultra-premium digital platforms</span> where high-performance 
-            engineering meets cinematic visual storytelling. Every pixel is optimized,
-            every interaction is intentional.
+            I craft <span className="text-emerald-400 font-medium border-b border-emerald-500/30">Ultra-premium digital platforms</span> where high-performance 
+            engineering meets cinematic visual storytelling.
           </motion.p>
 
-          {/* Actions - Responsive Layout */}
-          <motion.div
+          {/* Actions */}
+           <motion.div
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.8 }}
@@ -117,15 +130,13 @@ const Home = () => {
             </button>
           </motion.div>
         </div>
-
-        {/* Merkova Signature Footer Hint */}
-      
       </section>
+
     </main>
   )
 }
 
-// --- NAVBAR REFACTORED FOR RESPONSIVENESS ---
+// --- NAVBAR COMPONENTS ---
 
 const MerkovaNavbar = () => {
   const links = [
@@ -133,69 +144,25 @@ const MerkovaNavbar = () => {
     { title: "Projects", icon: <IconTerminal2 className="h-full w-full" />, href: "/projects" },
     { title: "Works", icon: <IconBriefcase className="h-full w-full" />, href: "/works" },
     { title: "About", icon: <IconUser className="h-full w-full" />, href: "/about" },
-    { title: "Pricing", icon: <IconCurrencyDollar className="h-full w-full" />, href: "/pricing" },
+    { title: "Price", icon: <IconCurrencyDollar className="h-full w-full" />, href: "/pricing" },
     { title: "Contact", icon: <IconMail className="h-full w-full" />, href: "/contact" },
   ];
 
   return (
-    <nav className="flex items-center justify-center">
+    <nav className="flex items-center justify-center w-full max-w-fit">
       <FloatingDock items={links} />
     </nav>
   );
 };
 
 const FloatingDock = ({ items }) => {
-  return (
-    <>
-      <FloatingDockDesktop items={items} />
-      <FloatingDockMobile items={items} />
-    </>
-  );
-};
-
-const FloatingDockMobile = ({ items }) => {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="relative block md:hidden">
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            layoutId="nav"
-            className="absolute right-0 top-full mt-4 flex flex-col items-center gap-3 p-2 bg-black/80 backdrop-blur-xl rounded-2xl border border-emerald-500/20 shadow-2xl"
-          >
-            {items.map((item, idx) => (
-              <motion.a
-                key={item.title}
-                href={item.href}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ delay: idx * 0.05 }}
-                className="flex h-12 w-12 items-center justify-center rounded-full bg-neutral-900 text-white border border-white/10"
-              >
-                <div className="h-6 w-6">{item.icon}</div>
-              </motion.a>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-      <button
-        onClick={() => setOpen(!open)}
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-500 text-black shadow-xl scale-90"
-      >
-        <IconLayoutNavbarCollapse className={cn("h-7 w-7 transition-transform", open && "rotate-180")} />
-      </button>
-    </div>
-  );
-};
-
-const FloatingDockDesktop = ({ items }) => {
   let mouseX = useMotionValue(Infinity);
+  
   return (
     <motion.div
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
-      className="hidden h-16 items-center gap-4 rounded-2xl bg-black/60 backdrop-blur-3xl px-6 md:flex border border-white/10 shadow-2xl"
+      className="mx-auto flex h-14 md:h-16 items-center gap-3 md:gap-4 rounded-2xl bg-black/40 border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur-xl px-4 md:px-6"
     >
       {items.map((item) => (
         <IconContainer mouseX={mouseX} key={item.title} {...item} />
@@ -206,41 +173,56 @@ const FloatingDockDesktop = ({ items }) => {
 
 function IconContainer({ mouseX, title, icon, href }) {
   let ref = useRef(null);
+
   let distance = useTransform(mouseX, (val) => {
     let bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
     return val - bounds.x - bounds.width / 2;
   });
 
-  let width = useSpring(useTransform(distance, [-150, 0, 150], [45, 80, 45]), { mass: 0.1, stiffness: 150, damping: 12 });
-  let height = useSpring(useTransform(distance, [-150, 0, 150], [45, 80, 45]), { mass: 0.1, stiffness: 150, damping: 12 });
+  // Smooth responsive scaling
+  let width = useSpring(useTransform(distance, [-150, 0, 150], [40, 70, 40]), {
+    mass: 0.1,
+    stiffness: 150,
+    damping: 12,
+  });
   
+  let height = useSpring(useTransform(distance, [-150, 0, 150], [40, 70, 40]), {
+    mass: 0.1,
+    stiffness: 150,
+    damping: 12,
+  });
+
   const [hovered, setHovered] = useState(false);
 
   return (
-    <a href={href} className="relative">
+    <a href={href} className="relative block">
       <motion.div
         ref={ref}
         style={{ width, height }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         className={cn(
-          "flex items-center justify-center rounded-full transition-colors duration-300",
-          hovered ? "bg-emerald-500 text-black shadow-lg shadow-emerald-500/40" : "bg-neutral-800 text-white"
+          "aspect-square flex items-center justify-center rounded-full transition-colors duration-300 cursor-pointer",
+          hovered 
+            ? "bg-emerald-500 text-black shadow-[0_0_20px_rgba(16,185,129,0.5)]" 
+            : "bg-neutral-900/80 text-neutral-400 hover:bg-neutral-800 hover:text-white border border-white/5"
         )}
       >
         <AnimatePresence>
           {hovered && (
             <motion.div
-              initial={{ opacity: 0, y: -10, x: "-50%" }}
-              animate={{ opacity: 1, y: 55, x: "-50%" }}
-              exit={{ opacity: 0, y: 0, x: "-50%" }}
-              className="absolute left-1/2 w-fit rounded-md border border-emerald-900 bg-emerald-950 px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-emerald-400 whitespace-nowrap"
+              // Tooltip appearing BELOW the icon since nav is at top
+              initial={{ opacity: 0, y: 10, x: "-50%" }}
+              animate={{ opacity: 1, y: 50, x: "-50%" }} 
+              exit={{ opacity: 0, y: 10, x: "-50%" }}
+              className="absolute left-1/2 top-0 w-fit -translate-x-1/2 whitespace-nowrap rounded-md border border-emerald-500/20 bg-black/90 px-2 py-1 text-[10px] md:text-xs font-bold uppercase tracking-widest text-emerald-400 shadow-xl backdrop-blur-sm pointer-events-none z-50"
             >
               {title}
             </motion.div>
           )}
         </AnimatePresence>
-        <div className="flex h-6 w-6 items-center justify-center">
+        
+        <div className="flex h-5 w-5 md:h-6 md:w-6 items-center justify-center">
           {icon}
         </div>
       </motion.div>
