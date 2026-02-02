@@ -4,8 +4,8 @@
   "private": true,
   "type": "commonjs",
   "scripts": {
-    "dev": "nodemon api/index.js",
-    "start": "node api/index.js"
+    "dev": "nodemon src/api/index.js",
+    "start": "node src/api/index.js"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",

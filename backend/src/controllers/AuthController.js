@@ -122,7 +122,7 @@ exports.signup = async (req, res) => {
 };
 
 /* ========================== SIGNIN ========================== */
-const signin = async (req, res) => {
+exports.signin = async (req, res) => {
   try {
     const { email, password, otp, secretcode } = req.body;
 
@@ -245,4 +245,3 @@ const signin = async (req, res) => {
   }
 };
 
-module.exports={signup,signin};
