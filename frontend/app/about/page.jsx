@@ -1,10 +1,11 @@
-import About from '@/app/AllPageComponents/About'
+
 import React from 'react'
+import About from '../AllPageComponents/About'
 
 const Page = () => {
   return (
     <div>
-        <About />
+        <About/>
     </div>
   )
 }
