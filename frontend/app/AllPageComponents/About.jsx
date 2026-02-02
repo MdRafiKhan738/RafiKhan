@@ -1,23 +1,41 @@
 'use client'
-import rafipic from '../../public/RafiKhan.png'
+
 import React from 'react'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
+
+// ICONS (COLORFUL / GLASSY)
 import {
-  Code2,
-  Database,
-  Brain,
-  Cpu,
-  Cloud,
-  GraduationCap,
-  Download,
-  Briefcase,
-  Rocket
-} from 'lucide-react'
+  SiReact,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiMongodb,
+  SiPostgresql,
+  SiRedux,
+  SiTailwindcss,
+  SiFramer,
+  SiAmazonaws,
+  SiPython,
+  SiCplusplus,
+  SiTypescript,
+  SiJavascript,
+  SiIos,
+  SiAndroid,
+  SiSwift,
+  SiFirebase
+} from 'react-icons/si'
+
+import { Download, ArrowRight } from 'lucide-react'
 
 import Silk from '@/components/Silk'
 import RafiStars from '@/components/RafiStars'
 
+import rafipic from '../../public/RafiKhanLogo.png'
+
 const About = () => {
+  const router = useRouter()
+
   return (
     <main className="relative min-h-screen w-full bg-[#020617] overflow-x-hidden">
 
@@ -28,130 +46,115 @@ const About = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-[#020617]" />
       </div>
 
-      {/* 🧠 CONTENT */}
-      <section className="relative z-10 px-6 md:px-16 lg:px-24 xl:px-32 pt-32 pb-32 max-w-[1600px] mx-auto space-y-24">
+      {/* CONTENT */}
+      <section className="relative z-10 max-w-[1600px] mx-auto px-6 md:px-16 xl:px-28 pt-32 pb-40 space-y-40">
 
-        {/* HERO INTRO */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9 }}
-          className="max-w-4xl space-y-6"
-        >
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-white">
-            About <span className="text-blue-500">Rafi Khan</span>
-          </h1>
+        {/* HERO */}
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="space-y-8"
+          >
+            <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-tight">
+              Hi, I’m <span className="text-blue-500">Rafi Khan</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-neutral-300 leading-relaxed">
+              Fullstack Architect • Entrepreneur • System Designer
+              <br />
+              I build <span className="text-blue-400 font-semibold">Amazon‑level platforms</span>,
+              AI products, education ecosystems & mobile apps.
+            </p>
 
-          <p className="text-xl md:text-2xl text-neutral-300 leading-relaxed">
-            I am not just another developer or freelancer.
-            <br />
-            I am a <span className="text-blue-400 font-semibold">Fullstack Architect & Entrepreneur</span> building
-            <span className="text-blue-400"> ultra-large-scale platforms</span> — Amazon-level systems,
-            education ecosystems, and AI-powered products.
-          </p>
-        </motion.div>
+            <div className="flex flex-wrap gap-6">
+              <button
+                onClick={() => router.push('/contact')}
+                className="group px-8 py-4 rounded-full bg-blue-500 text-black font-bold flex items-center gap-3 hover:scale-105 transition"
+              >
+                Get In Touch
+                <ArrowRight className="group-hover:translate-x-1 transition" />
+              </button>
 
-        {/* SKILLS GRID */}
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-8">
+              <a
+                href="/Rafi_Khan_CV.pdf"
+                download
+                className="px-8 py-4 rounded-full border border-white/20 text-white font-bold hover:bg-white/10 transition"
+              >
+                <Download className="inline mr-2" /> CV
+              </a>
+            </div>
+          </motion.div>
 
-          <SkillCard
-            icon={<Code2 />}
-            title="Frontend Engineering"
-            items={[
-              'HTML, CSS, JavaScript',
-              'React.js, Next.js',
-              'Redux Toolkit',
-              'Advanced Animations (Framer Motion)',
-              'Ultra-Premium UI/UX'
-            ]}
-          />
-
-          <SkillCard
-            icon={<Database />}
-            title="Backend & Databases"
-            items={[
-              'Node.js Architecture',
-              'MongoDB, PostgreSQL',
-              'NeonDB, Supabase',
-              'Headless CMS (Strapi)',
-              'Enterprise API Design'
-            ]}
-          />
-
-          <SkillCard
-            icon={<Cloud />}
-            title="Cloud & Scalability"
-            items={[
-              'AWS Infrastructure',
-              'High-Traffic Systems',
-              'Secure Auth Systems',
-              'Large-Scale Ecommerce'
-            ]}
-          />
-
-          <SkillCard
-            icon={<Brain />}
-            title="AI & Advanced Tech"
-            items={[
-              'Python (Advanced)',
-              'AI Text-to-Video',
-              'AI SaaS Products',
-              'Automation Systems'
-            ]}
-          />
-
-          <SkillCard
-            icon={<Cpu />}
-            title="Programming Languages"
-            items={[
-              'JavaScript / TypeScript',
-              'Python (Advanced)',
-              'C++ (Advanced)',
-              'SQL / NoSQL'
-            ]}
-          />
-
-          <SkillCard
-            icon={<GraduationCap />}
-            title="Education Platforms"
-            items={[
-              'Skill-based Learning Systems',
-              'Massive Education Portals',
-              'Mentoring Builders & Founders'
-            ]}
-          />
+          {/* IMAGE */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2 }}
+            className="relative flex justify-center"
+          >
+            <div className="absolute inset-0 rounded-full blur-3xl bg-blue-500/30" />
+            <Image
+              src={rafipic}
+              alt="Rafi Khan"
+              className="relative rounded-full border border-white/20 backdrop-blur-xl"
+              width={420}
+              height={420}
+              priority
+            />
+          </motion.div>
         </div>
 
-        {/* 🚀 TIMELINE */}
-        <div className="space-y-12">
-          <h2 className="text-4xl font-bold text-white flex items-center gap-3">
-            <Rocket className="text-blue-500" />
-            Journey & Achievements
-          </h2>
+        {/* TECH STACK – SCROLLING */}
+        <div className="space-y-14">
+          <h2 className="text-4xl font-bold text-white">Tech Arsenal</h2>
 
-          <div className="space-y-8 border-l border-blue-500/30 pl-8">
-            <Timeline year="2018" text="Started professional journey as a Fullstack Developer, mastering frontend & backend fundamentals." />
-            <Timeline year="2020" text="Built scalable ecommerce & education platforms with real-world traffic." />
-            <Timeline year="2022" text="Entered AI, cloud architecture, and enterprise-grade system design." />
-            <Timeline year="2024" text="Architecting Amazon-level ecommerce ecosystems and AI products." />
-            <Timeline year="Present" text="Entrepreneur building massive digital platforms, not freelancing." />
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-10">
+            <Tech icon={<SiReact />} label="React" color="#61dafb" />
+            <Tech icon={<SiNextdotjs />} label="Next.js" color="#ffffff" />
+            <Tech icon={<SiRedux />} label="Redux" color="#764abc" />
+            <Tech icon={<SiTailwindcss />} label="Tailwind" color="#38bdf8" />
+            <Tech icon={<SiFramer />} label="Framer Motion" color="#e100ff" />
+            <Tech icon={<SiJavascript />} label="JavaScript" color="#f7df1e" />
+            <Tech icon={<SiTypescript />} label="TypeScript" color="#3178c6" />
+            <Tech icon={<SiNodedotjs />} label="Node.js" color="#3c873a" />
+            <Tech icon={<SiMongodb />} label="MongoDB" color="#47a248" />
+            <Tech icon={<SiPostgresql />} label="PostgreSQL" color="#336791" />
+            <Tech icon={<SiAmazonaws />} label="AWS" color="#ff9900" />
+            <Tech icon={<SiPython />} label="Python" color="#ffd43b" />
+            <Tech icon={<SiCplusplus />} label="C++" color="#00599c" />
+            <Tech icon={<SiFirebase />} label="Firebase" color="#ffca28" />
+            <Tech icon={<SiIos />} label="iOS Dev" color="#ffffff" />
+            <Tech icon={<SiSwift />} label="Swift" color="#f05138" />
+            <Tech icon={<SiAndroid />} label="Android" color="#3ddc84" />
+            <Tech icon={<SiReact />} label="React Native" color="#61dafb" />
           </div>
         </div>
 
-        {/* 📄 DOWNLOAD CV */}
+        {/* STATS */}
+        <div className="grid md:grid-cols-3 gap-10">
+          <Stat title="Projects Delivered" value="60+" />
+          <Stat title="Happy Customers" value="100+" />
+          <Stat title="Years Experience" value="7+" />
+        </div>
+
+        {/* EXTRA INFO */}
         <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="flex justify-center"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-4xl space-y-6"
         >
-          <a
-            href="/Rafi_Khan_CV.pdf"
-            download
-            className="flex items-center gap-3 rounded-full px-10 py-4 bg-white/10 backdrop-blur-xl border border-white/20 text-white font-bold hover:bg-blue-500 hover:text-black transition-all shadow-[0_0_40px_rgba(59,130,246,0.5)]"
-          >
-            <Download />
-            Download CV
-          </a>
+          <h2 className="text-4xl font-bold text-white">More About Me</h2>
+          <p className="text-xl text-neutral-300 leading-relaxed">
+            I’m also a <span className="text-blue-400 font-semibold">Mobile App Developer</span> —
+            building high‑performance <b>iOS apps</b>, cross‑platform systems with
+            <b> React Native</b>, and scalable backend‑driven mobile architectures.
+            <br /><br />
+            I don’t freelance. I architect systems meant to scale to
+            <span className="text-blue-400"> millions of users</span>.
+          </p>
         </motion.div>
 
       </section>
@@ -161,34 +164,31 @@ const About = () => {
 
 export default About
 
-/* ---------------- COMPONENTS ---------------- */
+/* COMPONENTS */
 
-const SkillCard = ({ icon, title, items }) => (
+const Tech = ({ icon, label, color }) => (
   <motion.div
-    whileHover={{ y: -6 }}
-    className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl p-6 space-y-4"
+    whileHover={{ y: -8, scale: 1.05 }}
+    className="group rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl p-6 flex flex-col items-center gap-4"
   >
-    <div className="flex items-center gap-3 text-blue-400">
+    <div
+      className="text-5xl"
+      style={{ color }}
+    >
       {icon}
-      <h3 className="text-xl font-bold text-white">{title}</h3>
     </div>
-    <ul className="space-y-2 text-neutral-300">
-      {items.map((item, i) => (
-        <li key={i}>• {item}</li>
-      ))}
-    </ul>
+    <span className="text-white font-semibold group-hover:text-blue-400 transition">
+      {label}
+    </span>
   </motion.div>
 )
 
-const Timeline = ({ year, text }) => (
+const Stat = ({ title, value }) => (
   <motion.div
-    initial={{ opacity: 0, x: -20 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    viewport={{ once: true }}
-    className="relative"
+    whileHover={{ scale: 1.05 }}
+    className="rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl p-10 text-center"
   >
-    <span className="absolute -left-[42px] top-1 h-4 w-4 rounded-full bg-blue-500" />
-    <h4 className="text-lg font-bold text-blue-400">{year}</h4>
-    <p className="text-neutral-300">{text}</p>
+    <h3 className="text-5xl font-extrabold text-blue-500">{value}</h3>
+    <p className="mt-2 text-neutral-300 text-lg">{title}</p>
   </motion.div>
 )
