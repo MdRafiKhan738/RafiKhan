@@ -4,7 +4,8 @@ import React from 'react'
 const Page = () => {
   return (
     <div>
-        <Pricing    />
+
+        <Pricing />
     </div>
   )
 }

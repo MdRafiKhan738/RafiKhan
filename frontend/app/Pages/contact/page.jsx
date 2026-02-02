@@ -1,10 +1,10 @@
-import { Contact } from 'lucide-react'
+import Contact from '@/app/AllPageComponents/Contact'
 import React from 'react'
 
 const Page = () => {
   return (
     <div>
-        <Contact/>
+        <Contact />
     </div>
   )
 }
