@@ -145,7 +145,7 @@ const MerkovaNavbar = () => {
   const links = [
     { title: "Home", icon: <IconHome className="h-full w-full" />, href: "/" },
     { title: "Projects", icon: <IconTerminal2 className="h-full w-full" />, href: "/projects" },
-    { title: "Works", icon: <IconBriefcase className="h-full w-full" />, href: "/works" },
+    { title: "Services", icon: <IconBriefcase className="h-full w-full" />, href: "/services" },
     { title: "About", icon: <IconUser className="h-full w-full" />, href: "/about" },
     { title: "Price", icon: <IconCurrencyDollar className="h-full w-full" />, href: "/pricing" },
     { title: "Contact", icon: <IconMail className="h-full w-full" />, href: "/contact" },
