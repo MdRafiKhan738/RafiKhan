@@ -1,5 +1,5 @@
 'use client'
-
+import rafipic from '../../public/RafiKhan.png'
 import React from 'react'
 import { motion } from 'framer-motion'
 import {
