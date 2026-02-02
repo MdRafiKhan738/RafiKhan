@@ -1,5 +1,6 @@
-import Works from '@/app/AllPageComponents/Works'
+
 import React from 'react'
+import Works from '../AllPageComponents/Works'
 
 const Page = () => {
   return (

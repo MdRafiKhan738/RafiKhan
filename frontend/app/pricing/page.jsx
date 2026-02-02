@@ -1,5 +1,6 @@
-import Pricing from '@/app/AllPageComponents/Pricing'
+
 import React from 'react'
+import Pricing from '../AllPageComponents/Pricing'
 
 const Page = () => {
   return (

@@ -1,5 +1,6 @@
-import Projects from '@/app/AllPageComponents/Projects'
+
 import React from 'react'
+import Projects from '../AllPageComponents/Projects'
 
 const Page = () => {
   return (

@@ -1,5 +1,6 @@
-import Contact from '@/app/AllPageComponents/Contact'
+
 import React from 'react'
+import Contact from '../AllPageComponents/Contact'
 
 const Page = () => {
   return (

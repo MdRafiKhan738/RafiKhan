@@ -114,7 +114,7 @@ const Home = () => {
             transition={{ delay: 0.6 }}
             className="max-w-2xl text-sm sm:text-base md:text-xl lg:text-2xl leading-relaxed text-neutral-300"
           >
-            I craft <span className="text-emerald-400 font-medium border-b border-emerald-500/30">Ultra-premium digital platforms</span> where high-performance 
+            I craft <span className="text-emerald-400 font-medium border-b border-emerald-500/30">Ultra-premium digital platforms</span> where high-performance ,secure large-scale applications meet stunning design. Bridging the gap where software
             engineering meets cinematic visual storytelling.
           </motion.p>
 
