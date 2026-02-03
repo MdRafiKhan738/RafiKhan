@@ -1,6 +1,7 @@
 import React from 'react'
 import Home from './AllPageComponents/Home'
-export const serverurl=import.meta.env.VITE_SERVER_URL;
+export const serverurl = process.env.NEXT_PUBLIC_SERVER_URL
+
 const page = () => {
   return (
     <div>
