@@ -6,8 +6,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 import toast, { Toaster } from 'react-hot-toast'
 import Image from 'next/image'
 
-import { serverurl } from "../../page.jsx"
-import rafilogo from "../../public/RafiLogo.jpg"
+
+import rafilogo from "../../public/Rafilogo.jpg"
+import { serverurl } from '../page'
 
 const theme = {
   primary: '#152C21',
