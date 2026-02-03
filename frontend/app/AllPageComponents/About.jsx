@@ -4,7 +4,7 @@ import React, { useRef } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { motion, useScroll, useTransform, useSpring, useInView } from 'framer-motion'
-
+import cv from "../../public/Rafi_Khan_Cv.pdf"
 // ICONS
 import {
   SiReact, SiNextdotjs, SiNodedotjs, SiMongodb, SiPostgresql,
@@ -84,7 +84,7 @@ const About = () => {
               <button onClick={() => router.push('/contact')} className="group relative px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black rounded-full font-bold text-lg transition-all flex items-center gap-3 shadow-[0_0_20px_rgba(34,211,238,0.4)]">
                 Work With Me <ArrowRight className="group-hover:translate-x-1 transition" />
               </button>
-              <a href="/Rafi_Khan_CV.pdf" download className="px-8 py-4 rounded-full border border-white/20 hover:bg-white/10 text-white font-medium transition-all flex items-center gap-2 backdrop-blur-md">
+              <a href={cv} download className="px-8 py-4 rounded-full border border-white/20 hover:bg-white/10 text-white font-medium transition-all flex items-center gap-2 backdrop-blur-md">
                 <Download size={20} /> Download CV
               </a>
             </motion.div>
