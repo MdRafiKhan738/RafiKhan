@@ -51,7 +51,7 @@ export default function ContactPage() {
     e.preventDefault()
     try {
       setloading(true)
-      const { data } = await axios.post(`${serverurl}contact/sendmessage`, formdata)
+      const { data } = await axios.post(`${serverurl}/contact/sendmessage`, formdata)
     if(data?.success){
 
      toast.success(data.message || 'Message sent successfully 🚀 ')}
