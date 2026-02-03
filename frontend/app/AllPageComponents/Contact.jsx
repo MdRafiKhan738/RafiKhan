@@ -66,8 +66,9 @@ export default function ContactPage() {
       })
     } catch (error) {
      
+      toast.error(error?.response?.data?.message || 'Failed to send the messages')
     } finally {
-           toast.error(error?.response?.data?.message || 'Failed to send the messages')
+      toast.error("Server Error")
     }
   }
 
