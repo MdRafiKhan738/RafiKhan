@@ -38,7 +38,7 @@ const Signup = () => {
   const sendotp = async () => {
     try {
       setloading(true)
-      const { data } = await axios.post(`${serverurl}/user/signup`, {
+      const { data } = await axios.post(`${serverurl}user/signup`, {
         step: 'send-otp',
         fullname: form.fullname,
         email: form.email,
