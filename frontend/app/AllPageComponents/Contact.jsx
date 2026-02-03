@@ -11,8 +11,9 @@ import {
   FaLinkedin,
   FaPaperPlane 
 } from 'react-icons/fa'
+import { serverurl } from '../page'
 
-const serverurl = process.env.NEXT_PUBLIC_SERVER_URL
+
 
 export default function ContactPage() {
   const [formdata, setformdata] = useState({
@@ -28,7 +29,7 @@ export default function ContactPage() {
     e.preventDefault()
     try {
       setloading(true)
-      await axios.post(${serverurl}/contact/sendmessage, formdata)
+      await axios.post(`${serverurl}contact/sendmessage`, formdata)
       alert("Message sent successfully 🚀")
       setformdata({ name: '', email: '', subject: '', message: '', budget: '', phonenumber: '' })
     } catch (error) {
