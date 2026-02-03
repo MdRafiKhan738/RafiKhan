@@ -7,7 +7,7 @@ const { Server } = require("socket.io")
 
 const connectdb = require("../Db")
 const userrouter = require("../routers/UserRouter")
-
+const contactrouter=require("../routers/ContactRouter.js")
 dotenv.config()
 
 const app = express()
@@ -72,7 +72,7 @@ app.get("/", (req, res) => {
 })
 
 app.use("/user", userrouter)
-
+app.use("/contact",contactrouter)
 /* ===================== SERVER START ===================== */
 
 const PORT = process.env.PORT || 5000
