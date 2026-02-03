@@ -45,11 +45,7 @@ const Home = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-[#020617]" />
       </div>
 
-      {/* 🛠️ UNIVERSAL FLOATING DOCK (ALWAYS TOP) */}
-      <div className="fixed z-[100] left-0 right-0 top-4 md:top-6 flex justify-center px-4 pointer-events-none">
-        {/* Pointer events auto enables clicks on the dock itself */}
-        <MerkovaNavbar />
-      </div>
+
 
       {/* 🧠 HERO CONTENT */}
       {/* Added pt-32 to push content down below the navbar */}
@@ -141,110 +137,6 @@ const Home = () => {
   )
 }
 
-// --- NAVBAR COMPONENTS ---
 
-const MerkovaNavbar = () => {
-  const links = [
-    { title: "Home", icon: <IconHome className="h-full w-full" />, href: "/" },
-    { title: "Projects", icon: <IconTerminal2 className="h-full w-full" />, href: "/projects" },
-    { title: "Services", icon: <IconBriefcase className="h-full w-full" />, href: "/services" },
-    { title: "About", icon: <IconUser className="h-full w-full" />, href: "/about" },
-    { title: "Price", icon: <IconCurrencyDollar className="h-full w-full" />, href: "/pricing" },
-    { title: "Contact", icon: <IconMail className="h-full w-full" />, href: "/contact" },
-  ];
-
-  return (
-    <nav className="flex items-center justify-center w-full max-w-fit pointer-events-auto">
-      <FloatingDock items={links} />
-    </nav>
-  );
-};
-
-const FloatingDock = ({ items }) => {
-  let mouseX = useMotionValue(Infinity);
-  
-  return (
-    <motion.div
-      onMouseMove={(e) => mouseX.set(e.pageX)}
-      onMouseLeave={() => mouseX.set(Infinity)}
-      className="mx-auto flex h-14 md:h-16 items-center gap-3 md:gap-4 rounded-2xl bg-black/40 border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur-xl px-4 md:px-6"
-    >
-      {items.map((item) => (
-        <IconContainer mouseX={mouseX} key={item.title} {...item} />
-      ))}
-    </motion.div>
-  );
-};
-
-function IconContainer({ mouseX, title, icon, href }) {
-  let ref = useRef(null);
-  
-  // State to check if device supports hover (Mouse vs Touch)
-  const [isHoverable, setIsHoverable] = useState(false);
-  const [hovered, setHovered] = useState(false);
-
-  useEffect(() => {
-    // Only enable hover logic if the device actually supports it (Desktops)
-    setIsHoverable(window.matchMedia('(hover: hover)').matches);
-  }, []);
-
-  let distance = useTransform(mouseX, (val) => {
-    let bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
-    return val - bounds.x - bounds.width / 2;
-  });
-
-  // Smooth responsive scaling
-  let width = useSpring(useTransform(distance, [-150, 0, 150], [40, 70, 40]), {
-    mass: 0.1,
-    stiffness: 150,
-    damping: 12,
-  });
-  
-  let height = useSpring(useTransform(distance, [-150, 0, 150], [40, 70, 40]), {
-    mass: 0.1,
-    stiffness: 150,
-    damping: 12,
-  });
-
-  return (
-    <a 
-      href={href} 
-      className="relative block"
-      onClick={() => setHovered(false)} // Fix: Force clear hover state on click
-    >
-      <motion.div
-        ref={ref}
-        style={{ width, height }}
-        onMouseEnter={() => isHoverable && setHovered(true)} // Fix: Only hover if mouse exists
-        onMouseLeave={() => setHovered(false)}
-        whileTap={{ scale: 0.9, backgroundColor: "#10b981", color: "black" }} // Mobile: Tap Effect
-        className={cn(
-          "aspect-square flex items-center justify-center rounded-full transition-colors duration-200 cursor-pointer",
-          hovered 
-            ? "bg-emerald-500 text-black shadow-[0_0_20px_rgba(16,185,129,0.5)]" 
-            : "bg-neutral-900/80 text-neutral-400 border border-white/5"
-        )}
-      >
-        <AnimatePresence>
-          {hovered && (
-            <motion.div
-              // Tooltip appearing BELOW the icon
-              initial={{ opacity: 0, y: 10, x: "-50%" }}
-              animate={{ opacity: 1, y: 50, x: "-50%" }} 
-              exit={{ opacity: 0, y: 10, x: "-50%" }}
-              className="absolute left-1/2 top-0 w-fit -translate-x-1/2 whitespace-nowrap rounded-md border border-emerald-500/20 bg-black/90 px-2 py-1 text-[10px] md:text-xs font-bold uppercase tracking-widest text-emerald-400 shadow-xl backdrop-blur-sm pointer-events-none z-50"
-            >
-              {title}
-            </motion.div>
-          )}
-        </AnimatePresence>
-        
-        <div className="flex h-5 w-5 md:h-6 md:w-6 items-center justify-center">
-          {icon}
-        </div>
-      </motion.div>
-    </a>
-  );
-}
 
 export default Home;

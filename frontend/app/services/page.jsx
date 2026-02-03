@@ -1,11 +1,12 @@
 
 import React from 'react'
-import Works from '../AllPageComponents/Works'
+import Services from '../AllPageComponents/Services'
+
 
 const Page = () => {
   return (
     <div>
-        <Works />
+      <Services />
     </div>
   )
 }
