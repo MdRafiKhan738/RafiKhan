@@ -92,7 +92,7 @@ const Home = () => {
                 'Ai Developer',
                 "Open Source Contributor",
                 "Tech Enthusiast",
-                "Amazing Animated Websites",
+                "Amazing Animated Websites Developer",
                 "React Guru",
                 "JavaScript Ninja",
                 "React Native Developer",
@@ -100,7 +100,9 @@ const Home = () => {
                 "Python Expert",
                 "Database Expert",
                 "Data Scientist",
-                "Ios Developer"
+                "Ios Developer",
+                "Android Developer",
+                "Bug Fixing Expert",
                 ]}
                 duration={2500}
               />
