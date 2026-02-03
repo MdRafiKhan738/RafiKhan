@@ -1,4 +1,5 @@
-import Signup from '@/app/AllPageComponents/Signup'
+
+import Signup from '../signup.jsx'
 import React from 'react'
 const page = () => {
   return (
