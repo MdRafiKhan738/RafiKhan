@@ -12,6 +12,7 @@ import {
   FaPaperPlane 
 } from 'react-icons/fa'
 import { serverurl } from '../page'
+import toast, { Toaster } from 'react-hot-toast'
 
 // Animation Variants for Stagger Effect
 const containerVariants = {
@@ -50,8 +51,11 @@ export default function ContactPage() {
     e.preventDefault()
     try {
       setloading(true)
-      await axios.post(`${serverurl}contact/sendmessage`, formdata)
-      alert("Message sent successfully 🚀")
+      const { data } = await axios.post(`${serverurl}contact/sendmessage`, formdata)
+    if(data?.success){
+
+     toast.success(data.message || 'Message sent successfully 🚀 ')}
+      
       setformdata({
         name: '',
         email: '',
@@ -61,9 +65,9 @@ export default function ContactPage() {
         phonenumber: ''
       })
     } catch (error) {
-      alert("Something went wrong ❌")
+     
     } finally {
-      setloading(false)
+           toast.error(error?.response?.data?.message || 'Failed to send the messages')
     }
   }
 
