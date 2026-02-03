@@ -103,7 +103,7 @@ export default function ContactPage() {
               animate={{ opacity: 1, x: 0 }}
               className="inline-block py-1 px-3 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-400 text-sm font-medium mb-4"
             >
-              🚀 Ready to Launch?
+              🚀 Ready to Launch a Fullstack Website & Mobile Application?
             </motion.span>
             
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
