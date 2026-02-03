@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import axios from 'axios'
 import { 
   FaPhoneAlt, 
@@ -13,12 +13,33 @@ import {
 } from 'react-icons/fa'
 import { serverurl } from '../page'
 
+// Animation Variants for Stagger Effect
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.3
+    }
+  }
+}
 
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  show: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 50 } }
+}
 
 export default function ContactPage() {
   const [formdata, setformdata] = useState({
-    name: '', email: '', subject: '', message: '', budget: '', phonenumber: ''
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+    budget: '',
+    phonenumber: ''
   })
+
   const [loading, setloading] = useState(false)
 
   const handlechange = (e) => {
@@ -31,7 +52,14 @@ export default function ContactPage() {
       setloading(true)
       await axios.post(`${serverurl}contact/sendmessage`, formdata)
       alert("Message sent successfully 🚀")
-      setformdata({ name: '', email: '', subject: '', message: '', budget: '', phonenumber: '' })
+      setformdata({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+        budget: '',
+        phonenumber: ''
+      })
     } catch (error) {
       alert("Something went wrong ❌")
     } finally {
@@ -40,142 +68,163 @@ export default function ContactPage() {
   }
 
   return (
-    // Added pt-24 to fix the Navbar overlap and overflow-hidden for background blobs
-    <div className="min-h-screen pt-24 pb-12 bg-[#0a0a0a] relative overflow-hidden flex items-center justify-center px-4">
+    <div className="relative min-h-screen bg-black overflow-hidden flex items-center justify-center pt-24 pb-12 px-4 sm:px-6 lg:px-8">
       
-      {/* Animated Background Blobs */}
-      <div className="absolute top-0 -left-4 w-72 h-72 bg-pink-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob" />
-      <div className="absolute top-0 -right-4 w-72 h-72 bg-purple-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000" />
-      <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-900 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000" />
+      {/* Animated Background Elements (Blobs) */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        <motion.div 
+          animate={{ x: [0, 100, 0], y: [0, -50, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+          className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-pink-600/30 rounded-full blur-[100px]" 
+        />
+        <motion.div 
+          animate={{ x: [0, -100, 0], y: [0, 50, 0] }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-purple-600/30 rounded-full blur-[100px]" 
+        />
+      </div>
 
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="w-full max-w-6xl grid md:grid-cols-2 gap-10 bg-white/5 backdrop-blur-2xl rounded-[2.5rem] p-8 md:p-12 border border-white/10 shadow-2xl z-10"
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+        className="relative z-10 w-full max-w-6xl grid lg:grid-cols-2 gap-8 lg:gap-12 bg-white/5 backdrop-blur-2xl rounded-3xl p-6 sm:p-10 border border-pink-500/20 shadow-[0_0_40px_rgba(236,72,153,0.1)]"
       >
 
-        {/* LEFT SIDE: Content */}
-        <div className="flex flex-col justify-center">
-          <motion.div
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            <h1 className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-500 mb-6">
-              Let’s Build <br /> Something Amazing 💖
+        {/* LEFT SIDE: Info & Visuals */}
+        <motion.div variants={itemVariants} className="flex flex-col justify-between">
+          <div>
+            <motion.span 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="inline-block py-1 px-3 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-400 text-sm font-medium mb-4"
+            >
+              🚀 Ready to Launch?
+            </motion.span>
+            
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+              Let’s Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-500">Amazing</span> 💖
             </h1>
+
             <p className="text-gray-400 text-lg mb-10 leading-relaxed">
-              Got a project idea, startup, or collaboration in mind? 
-              Reach out and let's create the next big thing together.
+              Got a killer project idea, a startup vision, wana creating a mobile app?,creating a fullstack website,or just want to collaborate? 
+              Drop me a message — let's turn that idea into reality.
             </p>
 
-            {/* CONTACT CARDS */}
+            {/* Contact Cards */}
             <div className="space-y-4">
-              {[
-                { icon: <FaPhoneAlt />, label: "01989678448", href: "tel:01989678448" },
-                { icon: <FaEnvelope />, label: "nextjs061@gmail.com", href: "mailto:nextjs061@gmail.com" }
-              ].map((item, idx) => (
-                <motion.a
-                  key={idx}
-                  href={item.href}
-                  whileHover={{ x: 10, backgroundColor: "rgba(236, 72, 153, 0.2)" }}
-                  className="flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/5 transition-all"
-                >
-                  <span className="text-pink-400 text-xl">{item.icon}</span>
-                  <span className="text-white font-medium">{item.label}</span>
-                </motion.a>
-              ))}
+              <ContactCard 
+                href="tel:01989678448" 
+                icon={<FaPhoneAlt />} 
+                text="01989678448" 
+                subtext="Call me directly"
+              />
+              <ContactCard 
+                href="mailto:nextjs061@gmail.com" 
+                icon={<FaEnvelope />} 
+                text="nextjs061@gmail.com" 
+                subtext="Send me an email"
+              />
+            </div>
+          </div>
+
+          {/* Social Links */}
+          <div className="mt-12">
+            <p className="text-gray-500 text-sm mb-4">Connect with me on</p>
+            <div className="flex gap-4">
+              <SocialIcon href="https://github.com/MdRafiKhan738" icon={<FaGithub />} />
+              <SocialIcon href="https://www.facebook.com/rafi.hossian.71" icon={<FaFacebook />} />
+              <SocialIcon href="https://www.linkedin.com/in/rafi-khan-25649a37b/" icon={<FaLinkedin />} />
+            </div>
+          </div>
+        </motion.div>
+
+        {/* RIGHT SIDE: Interactive Form */}
+        <motion.div variants={itemVariants} className="bg-black/20 p-6 rounded-2xl border border-white/5">
+          <form onSubmit={handlesubmit} className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <InputGroup name="name" value={formdata.name} onChange={handlechange} placeholder="Your Name" />
+              <InputGroup name="phonenumber" value={formdata.phonenumber} onChange={handlechange} placeholder="Phone Number" />
+            </div>
+            
+            <InputGroup name="email" value={formdata.email} onChange={handlechange} placeholder="Your Email Address" type="email" />
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <InputGroup name="subject" value={formdata.subject} onChange={handlechange} placeholder="Subject" />
+              <InputGroup name="budget" value={formdata.budget} onChange={handlechange} placeholder="Estimated Budget" />
             </div>
 
-            {/* SOCIALS */}
-            <div className="flex gap-5 mt-10">
-              {[
-                { icon: <FaGithub />, link: "https://github.com/MdRafiKhan738" },
-                { icon: <FaFacebook />, link: "https://www.facebook.com/rafi.hossian.71" },
-                { icon: <FaLinkedin />, link: "https://www.linkedin.com/in/rafi-khan-25649a37b/" }
-              ].map((soc, i) => (
-                <motion.a
-                  key={i}
-                  href={soc.link}
-                  target="_blank"
-                  whileHover={{ y: -5, scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="w-12 h-12 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white text-2xl hover:text-pink-400 hover:border-pink-500/50 transition-colors"
-                >
-                  {soc.icon}
-                </motion.a>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-
-        {/* RIGHT SIDE: Animated Form */}
-        <motion.form
-          onSubmit={handlesubmit}
-          initial={{ x: 50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="bg-black/20 p-8 rounded-3xl border border-white/5 space-y-4 relative"
-        >
-          {[
-            ['name', 'Your Name', 'text'],
-            ['email', 'Your Email', 'email'],
-            ['subject', 'Subject', 'text'],
-            ['budget', 'Project Budget', 'text'],
-            ['phonenumber', 'Phone Number', 'tel']
-          ].map(([name, placeholder, type], index) => (
-            <motion.div 
-              key={name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 + (index * 0.1) }}
-            >
-              <input
-                type={type}
-                name={name}
-                value={formdata[name]}
+            <motion.div whileTap={{ scale: 0.98 }}>
+              <textarea
+                name="message"
+                value={formdata.message}
                 onChange={handlechange}
-                placeholder={placeholder}
-                className="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500/50 transition-all placeholder:text-gray-500"
-                required
+                placeholder="Tell me the details about your project..."
+                rows="4"
+                className="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 outline-none focus:border-pink-500 focus:bg-pink-500/5 transition-all duration-300 resize-none"
               />
             </motion.div>
-          ))}
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1 }}
-          >
-            <textarea
-              name="message"
-              value={formdata.message}
-              onChange={handlechange}
-              placeholder="Tell me about your project..."
-              rows="4"
-              className="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white outline-none focus:border-pink-500 focus:ring-1 focus:ring-pink-500/50 transition-all placeholder:text-gray-500 resize-none"
-              required
-            />
-          </motion.div>
-
-          <motion.button
-            disabled={loading}
-            whileHover={{ scale: 1.02, boxShadow: "0px 0px 20px rgba(236, 72, 153, 0.4)" }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full py-4 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold text-lg flex items-center justify-center gap-3 disabled:opacity-50 transition-all"
-          >
-            {loading ? (
-              <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-            ) : (
-              <>
-                Send Message <FaPaperPlane className="text-sm" />
-              </>
-            )}
-          </motion.button>
-        </motion.form>
+            <motion.button
+              whileHover={{ scale: 1.02, boxShadow: "0 0 20px rgba(236, 72, 153, 0.4)" }}
+              whileTap={{ scale: 0.95 }}
+              disabled={loading}
+              className="w-full py-4 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 text-white font-bold text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-pink-500/25 transition-all"
+            >
+              {loading ? "Sending..." : <>Send Message <FaPaperPlane className="text-sm" /></>}
+            </motion.button>
+          </form>
+        </motion.div>
 
       </motion.div>
     </div>
+  )
+}
+
+// Reusable Components for cleaner code
+
+function ContactCard({ href, icon, text, subtext }) {
+  return (
+    <motion.a
+      whileHover={{ scale: 1.02, x: 5 }}
+      href={href}
+      className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/5 hover:bg-pink-500/10 hover:border-pink-500/30 transition-all group"
+    >
+      <div className="w-12 h-12 rounded-full bg-pink-500/20 flex items-center justify-center text-pink-400 group-hover:bg-pink-500 group-hover:text-white transition-all">
+        {icon}
+      </div>
+      <div>
+        <h3 className="text-white font-medium">{text}</h3>
+        <p className="text-gray-500 text-sm">{subtext}</p>
+      </div>
+    </motion.a>
+  )
+}
+
+function SocialIcon({ href, icon }) {
+  return (
+    <motion.a 
+      whileHover={{ y: -5, color: '#F472B6' }}
+      href={href} 
+      target="_blank"
+      className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-white text-xl border border-white/10 hover:border-pink-500/50 hover:bg-pink-500/10 transition-all"
+    >
+      {icon}
+    </motion.a>
+  )
+}
+
+function InputGroup({ name, value, onChange, placeholder, type = "text" }) {
+  return (
+    <motion.div whileTap={{ scale: 0.98 }}>
+      <input
+        type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        className="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 outline-none focus:border-pink-500 focus:bg-pink-500/5 transition-all duration-300"
+      />
+    </motion.div>
   )
 }
