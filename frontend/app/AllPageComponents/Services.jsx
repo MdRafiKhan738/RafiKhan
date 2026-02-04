@@ -12,7 +12,7 @@ const Services = () => {
       title: "Frontend Masterpiece",
       tech: "(ReactJS / NextJS 14)",
       price: 15000,
-      prepayment: 1000,
+      prepayment: 500,
       icon: <Laptop className="w-8 h-8 text-cyan-400" />,
       features: [
         "Ultra-smooth Framer Motion Animations",
@@ -27,7 +27,7 @@ const Services = () => {
       title: "Fullstack Empire",
       tech: "(MERN / NextJS Fullstack)",
       price: 50000,
-      prepayment: 3000,
+      prepayment: 1500,
       icon: <Cpu className="w-8 h-8 text-purple-400" />,
       features: [
         "Bank-Grade Security & JWT Auth",
@@ -58,7 +58,7 @@ const Services = () => {
       title: "AI & Automation",
       tech: "(Python / LLMs)",
       price: 20000,
-      prepayment: 2000,
+      prepayment: 1000,
       icon: <Database className="w-8 h-8 text-emerald-400" />,
       features: [
         "Custom Chatbots (OpenAI/Gemini API)",
@@ -73,7 +73,7 @@ const Services = () => {
       title: "Mobile App Ecosystem",
       tech: "(React Native)",
       price: 25000,
-      prepayment: 3000,
+      prepayment: 1500,
       icon: <Smartphone className="w-8 h-8 text-orange-400" />,
       features: [
         "Cross-Platform (iOS & Android)",
