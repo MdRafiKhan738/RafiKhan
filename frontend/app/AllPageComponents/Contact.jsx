@@ -62,7 +62,7 @@ const handlesubmit = async (e) => {
   try {
     setloading(true)
 
-    const api = `${serverurl.replace(/\/$/, "")}contact/sendmessage`
+    const api = `${serverurl}contact/sendmessage`
 
     const response = await axios.post(
       api,
