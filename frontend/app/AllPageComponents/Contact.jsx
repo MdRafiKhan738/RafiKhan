@@ -47,30 +47,71 @@ export default function ContactPage() {
     setformdata({ ...formdata, [e.target.name]: e.target.value })
   }
 
-  const handlesubmit = async (e) => {
-    e.preventDefault()
-    try {
-      setloading(true)
-      const { data } = await axios.post(`${serverurl}/contact/sendmessage`, formdata)
-    if(data?.success){
+const handlesubmit = async (e) => {
+  e.preventDefault()
 
-     toast.success(data.message || 'Message sent successfully 🚀 ')}
-      
-      setformdata({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-        budget: '',
-        phonenumber: ''
-      })
-    } catch (error) {
-     
-      toast.error(error?.response?.data?.message || 'Failed to send the messages')
-    } finally {
-      toast.error("Server Error")
-    }
+  // 🚫 Prevent double submit
+  if (loading) return
+
+  // 🧠 Basic frontend validation (optional but pro)
+  if (!formdata.name || !formdata.email || !formdata.message) {
+    toast.error("Name, Email and Message are required")
+    return
   }
+
+  try {
+    setloading(true)
+
+    const api = `${serverurl.replace(/\/$/, "")}/contact/sendmessage`
+
+    const response = await axios.post(
+      api,
+      formdata,
+      {
+        headers: {
+          "Content-Type": "application/json"
+        },
+        timeout: 15000 // ⏱️ Railway safe timeout
+      }
+    )
+
+    const data = response?.data
+
+    // ✅ Backend success confirmation
+    if (data && data.success === true) {
+      toast.success(data.message || "Message sent successfully 🚀")
+
+      // 🔄 Reset form only AFTER confirmed success
+      setformdata({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+        budget: "",
+        phonenumber: ""
+      })
+    } else {
+      // ❌ Backend responded but rejected
+      toast.error(data?.message || "Message not accepted by server")
+    }
+
+  } catch (error) {
+    // 🌐 Network / Server / CORS / Railway errors
+    if (error.response) {
+      // Backend responded with error status
+      toast.error(error.response.data?.message || "Server rejected the request")
+    } else if (error.request) {
+      // Request sent but no response
+      toast.error("Server not responding. Please try again later.")
+    } else {
+      // Axios config / unexpected error
+      toast.error("Something went wrong. Please try again.")
+    }
+  } finally {
+    setloading(false) // ✅ always stop loader
+  }
+}
+
 
   return (
     <div className="relative min-h-screen bg-black overflow-hidden flex items-center justify-center pt-24 pb-12 px-4 sm:px-6 lg:px-8">
