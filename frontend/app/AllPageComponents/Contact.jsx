@@ -60,7 +60,7 @@ const handlesubmit = async (e) => {
     setloading(true)
 
     const serverurl = process.env.NEXT_PUBLIC_SERVER_URL
-    const api = `${serverurl}/contact/sendmessage`
+  const api = `${serverurl.replace(/\/$/, '')}/contact/sendmessage`
 
     const response = await axios.post(api, formdata, {
       headers: { "Content-Type": "application/json" },
