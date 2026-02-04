@@ -186,6 +186,9 @@ const Services = () => {
                 <span className={`font-bold ${service.prepayment === 0 ? "text-green-400" : "text-white"}`}>
                   {service.prepayment === 0 ? "NO PREPAYMENT" : `${service.prepayment.toLocaleString()} Tk`}
                 </span>
+                   <span className={`font-bold ${service.prepayment === 0 ? "text-green-400" : "text-white"}`}>
+                  {service.prepayment === 0 ? "NO PREPAYMENT" : `${takaToUSD(service.prepayment)} USD`}
+                </span>
               </div>
               
               <button className="w-full py-3 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold flex items-center justify-center gap-2 transition-all shadow-lg shadow-purple-900/20 active:scale-95">
