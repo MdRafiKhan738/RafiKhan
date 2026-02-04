@@ -140,7 +140,16 @@ const About = () => {
                 "React Native & iOS (Swift)",
                 "Social Platforms (Like Instagram/FB)",
                 "Multi-vendor Marketplaces (Shopify clone)",
-                "Real-time Chat & Notifications"
+                "Real-time Chat & Notifications",
+                "Secure Cookie-based app",
+                "App Store & Play Store Deployment",
+                "AI-Integrated Mobile Solutions",
+                "Offline Mode & Data Sync",
+                "Ultra High Quality UI/UX Designs",
+                "High Performance & Scalability",
+                "Native Device Features (Camera/GPS)"
+
+    
               ]}
             />
             
@@ -159,7 +168,10 @@ const About = () => {
                 "SEO Optimized Websites",
                 "Ultra High Quality UI/UX Designs",
                 "Super Fast Performance (Lighthouse 90+)",
-                "Secure Payment Gateways (Stripe/SSL)"
+                "Secure Payment Gateways (Stripe/SSL)",
+                "Scalable Cloud Deployments (AWS/Docker)",
+                "Strapi for headless CMS",
+                "Superadmin,admin,and stuff panel or multi vendor panel website"
               ]}
             />
           </div>

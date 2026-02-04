@@ -29,6 +29,7 @@ import { cn } from "@/lib/utils"
  */
 
 const Home = () => {
+  
   return (
     <main className="relative min-h-screen w-full bg-[#020617] font-sans selection:bg-emerald-500/30 overflow-x-hidden">
       
@@ -124,7 +125,7 @@ const Home = () => {
             className="flex flex-col sm:flex-row gap-4 md:gap-6 pt-6"
           >
             <button className="group relative overflow-hidden rounded-full bg-emerald-500 px-8 py-3 md:px-12 md:py-4 font-black text-black transition-all hover:scale-105 hover:bg-emerald-400 hover:shadow-[0_0_40px_rgba(16,185,129,0.5)]">
-              <span className="relative z-10">Explore Projects</span>
+              <span className="relative z-10" >Explore Projects</span>
             </button>
             <button className="rounded-full border border-white/20 bg-white/5 px-8 py-3 md:px-12 md:py-4 font-bold text-white backdrop-blur-md transition-all hover:bg-white/10 hover:border-emerald-500/50">
               Get in Touch
