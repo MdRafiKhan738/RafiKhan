@@ -31,7 +31,7 @@ const Nav = () => {
     { name: "Projects", href: "/projects", icon: FolderGit2, color: "#8b5cf6" },
     { name: "Contact", href: "/contact", icon: Mail, color: "#ec4899" },
     { name: "Reviews", href: "/testimonials", icon: MessageSquareQuote, color: "#10b981" },
-    { name: "Pricing", href: "/pricing", icon: FaDollarSign, color: "#f97316" }
+    
   ];
 
   const activeItem = navItems.find(item => item.href === pathname);
