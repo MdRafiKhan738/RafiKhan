@@ -70,6 +70,10 @@ app.use(async (req, res, next) => {
 app.get("/", (req, res) => {
   res.send("API is running 🚀")
 })
+app.get("/contact/sendmessage", (req, res) => {
+  res.json({ success: true, message: "Contact route working" })
+})
+
 
 app.use("/user", userrouter)
 app.use("/contact",contactrouter)
