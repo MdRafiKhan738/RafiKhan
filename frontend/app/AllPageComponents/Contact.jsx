@@ -11,7 +11,7 @@ import {
   FaLinkedin,
   FaPaperPlane 
 } from 'react-icons/fa'
-import { serverurl } from '../page'
+
 import toast, { Toaster } from 'react-hot-toast'
 
 // Animation Variants for Stagger Effect
