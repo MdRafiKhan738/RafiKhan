@@ -59,9 +59,9 @@ const Home = () => {
             transition={{ duration: 0.9, ease: 'easeOut' }}
             className="text-[11vw] sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold leading-[0.95] tracking-tighter text-white"
           >
-            Designing the <br />
+            Developing the <br />
             <span className="text-emerald-500 inline-block hover:scale-[1.02] transition-transform duration-500 cursor-default text-shadow-glow">Future</span> 
-            <span className="text-white/90"> of Web.</span>
+            <span className="text-white/90"> of Web & Mobile Application.</span>
           </motion.h1>
 
           {/* Flip Text Animation */}
