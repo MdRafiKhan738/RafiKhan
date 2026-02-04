@@ -27,10 +27,10 @@ const Nav = () => {
   const navItems = [
     { name: "Home", href: "/", icon: Home, color: "#22c55e" },
     { name: "About", href: "/about", icon: User, color: "#38bdf8" },
-    { name: "Service", href: "/services", icon: Briefcase, color: "#f59e0b" },
+    { name: "Service", href: "/services", icon: Briefcase, color: "#b60fb6ff" },
     { name: "Projects", href: "/projects", icon: FolderGit2, color: "#8b5cf6" },
     { name: "Contact", href: "/contact", icon: Mail, color: "#ec4899" },
-    { name: "Reviews", href: "/testimonials", icon: MessageSquareQuote, color: "#10b981" },
+    { name: "Reviews", href: "/testimonials", icon: MessageSquareQuote, color: "#f86024ff" },
     
   ];
 
