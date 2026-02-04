@@ -1,5 +1,5 @@
 const express =require("express")
-const { sendcontactmessage, getallcontactmessages, replycontactmessage, getusermessages } = require("../controllers/ContactController")
+const {  getallcontactmessages, replycontactmessage, getusermessages, sendcontactmessage } = require("../controllers/ContactController")
 const router=express.Router()
 router.post("/sendmessage",sendcontactmessage)
 router.get("/getallmessages",getallcontactmessages)
