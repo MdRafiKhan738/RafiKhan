@@ -49,39 +49,27 @@ export default function ContactPage() {
 
 const handlesubmit = async (e) => {
   e.preventDefault()
-
-  // 🚫 Prevent double submit
   if (loading) return
 
-  // 🧠 Basic frontend validation (optional but pro)
   if (!formdata.name || !formdata.email || !formdata.message) {
-    toast.error("Name, Email and Message are required")
+    toast.error("Name, Email, and Message are required")
     return
   }
 
   try {
     setloading(true)
 
+    const serverurl = process.env.NEXT_PUBLIC_SERVER_URL
     const api = `${serverurl}/contact/sendmessage`
 
-    const response = await axios.post(
-      api,
-      formdata,
-      {
-        headers: {
-          "Content-Type": "application/json"
-        },
-        timeout: 15000 // ⏱️ Railway safe timeout
-      }
-    )
+    const response = await axios.post(api, formdata, {
+      headers: { "Content-Type": "application/json" },
+      timeout: 15000
+    })
 
     const data = response?.data
-
-    // ✅ Backend success confirmation
-    if (data && data.success === true) {
+    if (data?.success) {
       toast.success(data.message || "Message sent successfully 🚀")
-
-      // 🔄 Reset form only AFTER confirmed success
       setformdata({
         name: "",
         email: "",
@@ -91,24 +79,14 @@ const handlesubmit = async (e) => {
         phonenumber: ""
       })
     } else {
-      // ❌ Backend responded but rejected
-      toast.error(data?.message || "Message not accepted by server")
+      toast.error(data?.message || "Server rejected the request")
     }
-
   } catch (error) {
-    // 🌐 Network / Server / CORS / Railway errors
-    if (error.response) {
-      // Backend responded with error status
-      toast.error(error.response.data?.message || "Server rejected the request")
-    } else if (error.request) {
-      // Request sent but no response
-      toast.error("Server not responding. Please try again later.")
-    } else {
-      // Axios config / unexpected error
-      toast.error("Something went wrong. Please try again.")
-    }
+    if (error.response) toast.error(error.response.data?.message || "Server error")
+    else if (error.request) toast.error("Server not responding. Try later")
+    else toast.error("Unexpected error occurred")
   } finally {
-    setloading(false) // ✅ always stop loader
+    setloading(false)
   }
 }
 
