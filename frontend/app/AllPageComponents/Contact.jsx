@@ -49,10 +49,30 @@ export default function ContactPage() {
 
 const handlesubmit = async (e) => {
   e.preventDefault()
+
+  // prevent double submit
   if (loading) return
 
-  if (!formdata.name || !formdata.email || !formdata.message) {
-    toast.error("Name, Email, and Message are required")
+  // ---------- Frontend Validation ----------
+  const name = formdata?.name?.trim()
+  const email = formdata?.email?.trim()
+  const message = formdata?.message?.trim()
+
+  if (!name || !email || !message) {
+    toast.error("Name, Email and Message are required")
+    return
+  }
+
+  // Email regex (professional level)
+  const emailregex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  if (!emailregex.test(email)) {
+    toast.error("Please enter a valid email address")
+    return
+  }
+
+  // Message length protection
+  if (message.length < 10) {
+    toast.error("Message must be at least 10 characters")
     return
   }
 
@@ -60,33 +80,78 @@ const handlesubmit = async (e) => {
     setloading(true)
 
     const serverurl = process.env.NEXT_PUBLIC_SERVER_URL
-    const response = await axios.post(`${serverurl}/contact/sendmessage`, formdata, {
-      headers: { "Content-Type": "application/json" },
-      timeout: 15000
-    })
+
+    if (!serverurl) {
+      toast.error("Server configuration error")
+      return
+    }
+
+    // ---------- API Request ----------
+    const response = await axios.post(
+      `${serverurl}/contact/sendmessage`,
+      {
+        ...formdata,
+        name,
+        email,
+        message,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        timeout: 15000,
+        withCredentials: true, // future auth/session ready
+      }
+    )
 
     const data = response?.data
+
+    // ---------- Success ----------
     if (data?.success) {
-      toast.success(data.message || "Message sent successfully 🚀")
+      toast.success(data?.message || "Message sent successfully 🚀")
+
+      // Reset form safely
       setformdata({
         name: "",
         email: "",
         subject: "",
         message: "",
         budget: "",
-        phonenumber: ""
+        phonenumber: "",
       })
-    } else {
-      toast.error(data?.message || "Server rejected the request")
+    } 
+    // ---------- Logical Failure ----------
+    else {
+      toast.error(data?.message || "Unable to send message")
     }
+
   } catch (error) {
-    if (error.response) toast.error(error.response.data?.message || "Server error")
-    else if (error.request) toast.error("Server not responding. Try later")
-    else toast.error("Unexpected error occurred")
+
+    // ---------- Axios Error Handling ----------
+    if (error?.response) {
+      // Server responded with error
+      const msg = error.response?.data?.message
+      toast.error(msg || "Server rejected the request")
+    } 
+    else if (error?.request) {
+      // No response from server
+      toast.error("Server not responding. Please try again later")
+    } 
+    else if (error?.code === "ECONNABORTED") {
+      // Timeout
+      toast.error("Request timeout. Please try again")
+    } 
+    else {
+      toast.error("Unexpected error occurred")
+    }
+
+    console.error("Contact Form Error:", error)
+
   } finally {
     setloading(false)
   }
 }
+
 
 
   return (
