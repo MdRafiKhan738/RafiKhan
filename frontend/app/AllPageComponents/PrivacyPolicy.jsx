@@ -1,177 +1,291 @@
 "use client"
-import React, { useState, useEffect } from "react"
+import React from 'react';
+import { 
+  Shield, 
+  Lock, 
+  Eye, 
+  Database, 
+  Server, 
+  UserCheck, 
+  Globe, 
+  Mail, 
+  FileText, 
+  CheckCircle,
+  AlertCircle
+} from 'lucide-react';
 
-const PrivacyPolicy = () => {
-  const [dark, setDark] = useState(true)
-  const [progress, setProgress] = useState(0)
-  const [mounted, setMounted] = useState(false)
+ export const PrivacyPolicy = () => {
+  // Last Updated Date
+  const lastUpdated = "February 5, 2026";
 
-  // Handle Scroll Progress
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrolled = window.scrollY
-      const height = document.documentElement.scrollHeight - window.innerHeight
-      const percent = (scrolled / height) * 100
-      setProgress(percent)
-    }
-    window.addEventListener("scroll", handleScroll)
-    
-    // Set mounted to true to avoid hydration mismatch on date
-    setMounted(true)
-
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  // The "Super Cool" Glassmorphism Card Style
-  const sectionStyle =
-    "backdrop-blur-xl bg-white/5 dark:bg-black/30 border border-black/5 dark:border-white/10 rounded-2xl p-6 md:p-10 shadow-xl transition-all duration-300 hover:scale-[1.01] hover:shadow-2xl hover:border-purple-500/30"
-
-  return (
-    <div
-      className={`${
-        dark ? "dark bg-[#0a0a0a] text-white" : "bg-gray-50 text-black"
-      } min-h-screen transition-colors duration-500 ease-in-out font-sans`}
-    >
-      {/* Scroll Progress Bar */}
-<div
-  className="fixed top-0 left-0 h-[4px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 z-50 shadow-[0_0_15px_rgba(168,85,247,0.5)] transition-all duration-100 ease-out"
-  style={{ width: `${progress}%` }}
-/>
-
-
-      {/* Header Section */}
-      <div className="max-w-5xl mx-auto px-5 pt-20 pb-10">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-          <div>
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
-              Privacy Policy
-            </h1>
-            <p className="mt-2 opacity-70 text-sm md:text-base">
-              Last updated: {mounted ? new Date().toDateString() : "Loading..."}
+  const sections = [
+    {
+      title: "Introduction",
+      icon: <Shield className="w-6 h-6 text-blue-600 dark:text-blue-400" />,
+      content: (
+        <div className="space-y-4 ">
+          <p>
+            Your privacy is important. This policy explains how I collect, use, and protect your information.
+          </p>
+          <div className="pl-4 border-l-4 border-blue-500 bg-gray-50 dark:bg-gray-800/50 p-4 rounded-r-lg">
+            <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Our Commitment</h4>
+            <p>
+              I, Rafi Khan ("I", "me", "my"), am committed to protecting your privacy and ensuring transparency in how your data is handled. This Privacy Policy applies to all visitors and users of parthh.in and its subdomains.
             </p>
           </div>
-
-          {/* Theme Toggle Button */}
-          <button
-            onClick={() => setDark(!dark)}
-            className="group flex items-center gap-2 px-5 py-2.5 rounded-full border border-black/10 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/10 transition-all active:scale-95"
-          >
-            <span className="text-xl transition-transform group-hover:rotate-12">
-              {dark ? "☀️" : "🌙"}
-            </span>
-            <span className="font-medium text-sm">
-              {dark ? "Light Mode" : "Dark Mode"}
-            </span>
-          </button>
+          <div>
+            <h4 className="font-semibold text-gray-900 dark:text-white mt-4">Scope of Policy</h4>
+            <p>
+              This Privacy Policy covers all data collected through the website, including: authentication data from the Guestbook feature, user-generated content (messages), and anonymous analytics data. This policy does not apply to third-party websites linked from this site.
+            </p>
+          </div>
+          <div>
+            <h4 className="font-semibold text-gray-900 dark:text-white mt-4">Minimal Data Philosophy</h4>
+            <p>
+              I believe in collecting only the minimum data necessary for functionality. I do not sell, trade, or rent your personal information to third parties. Your data is used solely to provide and improve the website experience.
+            </p>
+          </div>
+          <p className="text-sm text-gray-500 dark:text-gray-400 italic">
+            This policy may be updated periodically. Continued use of the site constitutes acceptance of any changes.
+          </p>
         </div>
-      </div>
+      )
+    },
+    {
+      title: "Data We Collect",
+      icon: <Database className="w-6 h-6 text-purple-600 dark:text-purple-400" />,
+      content: (
+        <div className="space-y-4">
+          <p className="font-medium text-gray-700 dark:text-gray-300">Transparency about exactly what information is collected and how.</p>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>
+              <strong className="text-gray-900 dark:text-white">Authentication Data:</strong> When you sign in via GitHub or Google OAuth, I receive ONLY your display name and profile picture. Your email is used solely for ID and never shared.
+            </li>
+            <li>
+              <strong className="text-gray-900 dark:text-white">Guestbook Messages:</strong> Your display name, avatar, and message content with timestamp are stored and publicly visible.
+            </li>
+            <li>
+              <strong className="text-gray-900 dark:text-white">Automatic Data:</strong> IP addresses (anonymized), browser type, and timestamps are logged for security and debugging.
+            </li>
+          </ul>
+          <div className="flex items-start gap-3 mt-4 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-100 dark:border-green-800">
+            <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+            <div>
+              <h4 className="font-semibold text-green-800 dark:text-green-300">No Sensitive Data</h4>
+              <p className="text-sm text-green-700 dark:text-green-400">
+                I do NOT collect passwords, payment info, precise location, contacts, or health information.
+              </p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      title: "How Data Is Used",
+      icon: <FileText className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />,
+      content: (
+        <div className="space-y-3">
+          <p>Specific purposes for which collected data is processed:</p>
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+              <h4 className="font-semibold text-gray-900 dark:text-white mb-1">Guestbook Functionality</h4>
+              <p className="text-sm">Displaying your name/avatar alongside messages to identify you.</p>
+            </div>
+            <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+              <h4 className="font-semibold text-gray-900 dark:text-white mb-1">Account Management</h4>
+              <p className="text-sm">Allowing you to edit/delete messages. Moderation of content.</p>
+            </div>
+            <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+              <h4 className="font-semibold text-gray-900 dark:text-white mb-1">Analytics & Improvement</h4>
+              <p className="text-sm">Understanding popular pages and performance via anonymous data.</p>
+            </div>
+            <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+              <h4 className="font-semibold text-gray-900 dark:text-white mb-1">Communication</h4>
+              <p className="text-sm">Only for critical security notifications or if you reach out first.</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      title: "Analytics & Tracking",
+      icon: <Eye className="w-6 h-6 text-teal-600 dark:text-teal-400" />,
+      content: (
+        <div className="space-y-4">
+          <p>
+            <strong className="text-gray-900 dark:text-white">Vercel Analytics:</strong> Measures performance (load times, Core Web Vitals). Data is fully aggregated with no personal identifiers.
+          </p>
+          <p>
+            <strong className="text-gray-900 dark:text-white">Cookie Use:</strong> strictly for authentication sessions, theme preferences, and basic analytics. No advertising cookies.
+          </p>
+          <div className="p-4 border border-teal-200 dark:border-teal-800 rounded-lg">
+            <h4 className="font-semibold text-teal-900 dark:text-teal-300 mb-1">No Invasive Tracking</h4>
+            <p className="text-teal-800 dark:text-teal-400 text-sm">
+              I do NOT use session recordings, heatmaps, or keystroke logging. You can opt-out of analytics using tools like uBlock Origin.
+            </p>
+          </div>
+        </div>
+      )
+    },
+    {
+      title: "Third-Party Services",
+      icon: <Server className="w-6 h-6 text-orange-600 dark:text-orange-400" />,
+      content: (
+        <ul className="space-y-4">
+          <li className="flex flex-col sm:flex-row sm:items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+            <span>
+              <strong className="text-gray-900 dark:text-white block">GitHub & Google OAuth</strong>
+              <span className="text-sm">Used for authentication. Shares only public profile info.</span>
+            </span>
+            <a href="https://docs.github.com/privacy" className="text-blue-600 dark:text-blue-400 text-sm hover:underline mt-2 sm:mt-0">Privacy Policy &rarr;</a>
+          </li>
+          <li className="flex flex-col sm:flex-row sm:items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+            <span>
+              <strong className="text-gray-900 dark:text-white block">Appwrite (Backend)</strong>
+              <span className="text-sm">Secure database with encryption and role-based access.</span>
+            </span>
+          </li>
+          <li className="flex flex-col sm:flex-row sm:items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
+            <span>
+              <strong className="text-gray-900 dark:text-white block">Vercel (Hosting)</strong>
+              <span className="text-sm">Logs standard HTTP requests for security.</span>
+            </span>
+            <a href="https://vercel.com/legal/privacy-policy" className="text-blue-600 dark:text-blue-400 text-sm hover:underline mt-2 sm:mt-0">Privacy Policy &rarr;</a>
+          </li>
+        </ul>
+      )
+    },
+    {
+      title: "Your Rights & Control",
+      icon: <UserCheck className="w-6 h-6 text-pink-600 dark:text-pink-400" />,
+      content: (
+        <div className="space-y-4">
+          <p className="font-medium">Full control over your data:</p>
+          <div className="grid sm:grid-cols-2 gap-4">
+            <div className="border border-gray-200 dark:border-gray-700 p-4 rounded-lg">
+              <h5 className="font-bold text-gray-900 dark:text-white">Delete Messages</h5>
+              <p className="text-sm mt-1">Directly from the website instantly.</p>
+            </div>
+            <div className="border border-gray-200 dark:border-gray-700 p-4 rounded-lg">
+              <h5 className="font-bold text-gray-900 dark:text-white">Account Deletion</h5>
+              <p className="text-sm mt-1">Contact me to wipe all data within 30 days.</p>
+            </div>
+            <div className="border border-gray-200 dark:border-gray-700 p-4 rounded-lg">
+              <h5 className="font-bold text-gray-900 dark:text-white">Data Access</h5>
+              <p className="text-sm mt-1">Request a portable copy of your data.</p>
+            </div>
+            <div className="border border-gray-200 dark:border-gray-700 p-4 rounded-lg">
+              <h5 className="font-bold text-gray-900 dark:text-white">Correction</h5>
+              <p className="text-sm mt-1">Update profile directly or contact support.</p>
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      title: "Data Security",
+      icon: <Lock className="w-6 h-6 text-red-600 dark:text-red-400" />,
+      content: (
+        <div className="space-y-3">
+          <ul className="list-disc pl-5 space-y-2">
+            <li><strong>Encryption:</strong> HTTPS/TLS for transmission. Encrypted databases at rest.</li>
+            <li><strong>Access Control:</strong> Only the site owner has admin access.</li>
+            <li><strong>OAuth Security:</strong> Passwords are never stored on this site.</li>
+          </ul>
+          <div className="flex items-center gap-3 mt-2 p-3 bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-300 rounded-lg text-sm">
+            <AlertCircle className="w-5 h-5 flex-shrink-0" />
+            <p>While reasonable measures are taken, no internet transmission is 100% secure.</p>
+          </div>
+        </div>
+      )
+    },
+    {
+      title: "Children & GDPR",
+      icon: <Globe className="w-6 h-6 text-cyan-600 dark:text-cyan-400" />,
+      content: (
+        <div className="space-y-3">
+          <p>
+            <strong className="text-gray-900 dark:text-white">Age Requirement:</strong> You must be at least 13 years old to use the Guestbook.
+          </p>
+          <p>
+            <strong className="text-gray-900 dark:text-white">GDPR Compliance:</strong> EEA users have rights to access, rectification, erasure, and portability.
+          </p>
+          <p>
+            <strong className="text-gray-900 dark:text-white">Retention:</strong> Messages are kept indefinitely unless deleted. Analytics retained for 12 months.
+          </p>
+        </div>
+      )
+    }
+  ];
 
-      {/* Main Content Area */}
-      <div className="max-w-5xl mx-auto px-5 pb-24 space-y-8">
+  return (
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 py-12 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
+      <div className="max-w-4xl mx-auto mt-20">
         
-        {/* Section 1 */}
-        <div className={sectionStyle}>
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-purple-600 dark:text-purple-400">
-            1. Information We Collect
-          </h2>
-          <p className="opacity-80 leading-relaxed text-lg">
-            We collect personal information such as your name, email address,
-            phone number, and usage data to provide and improve our services.
-            This includes device information, IP address, and browsing activity
-            to enhance security and performance.
+        {/* Header Section */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight">
+            Privacy Policy
+          </h1>
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            I believe in transparency and collecting only the minimum data necessary to provide a great experience.
+          </p>
+          <div className="mt-4 inline-flex items-center px-4 py-1.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-sm font-medium">
+            Last Updated: {lastUpdated}
+          </div>
+        </div>
+
+        {/* Content Sections */}
+        <div className="space-y-8">
+          {sections.map((section, index) => (
+            <div 
+              key={index}
+              className="bg-white dark:bg-gray-900 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden hover:shadow-md transition-shadow duration-300"
+            >
+              <div className="p-6 sm:p-8">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-100 dark:border-gray-700">
+                    {section.icon}
+                  </div>
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                    {section.title}
+                  </h2>
+                </div>
+                
+                <div className="text-gray-600 dark:text-gray-300 leading-relaxed text-base sm:text-lg">
+                  {section.content}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Contact Section */}
+        <div className="mt-12 text-center p-8 bg-blue-600 dark:bg-blue-700 rounded-3xl text-white">
+          <h2 className="text-2xl font-bold mb-4">Have questions about this policy?</h2>
+          <p className="mb-6 opacity-90 text-lg">
+            I aim to respond to all privacy requests within 30 days.
+          </p>
+          <a 
+            href="mailto:nextjs061@gmail.com" 
+            className="inline-flex items-center gap-2 bg-white text-blue-600 px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition-colors"
+          >
+            <Mail className="w-5 h-5" />
+            nextjs061@gmail.com
+          </a>
+          <p className="mt-4 text-sm opacity-75">
+            Alternative: nextjs061@gmail.com
           </p>
         </div>
 
-        {/* Section 2 */}
-        <div className={sectionStyle}>
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-pink-600 dark:text-pink-400">
-            2. How We Use Your Information
-          </h2>
-          <p className="opacity-80 leading-relaxed text-lg">
-            Your information is used to operate our platform, improve user
-            experience, process transactions, detect fraud, and ensure system
-            security. We may also use data to personalize content and send
-            important updates.
-          </p>
-        </div>
+        {/* Footer */}
+        <footer className="mt-12 text-center text-gray-500 dark:text-gray-500 text-sm mb-[-10]">
+          &copy; {new Date().getFullYear()} Rafi Khan. All rights reserved.
+        </footer>
 
-        {/* Section 3 */}
-        <div className={sectionStyle}>
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-blue-600 dark:text-blue-400">
-            3. Data Protection & Security
-          </h2>
-          <p className="opacity-80 leading-relaxed text-lg">
-            We use advanced encryption, secure servers, and fraud detection
-            systems to protect your data. Access is strictly controlled and
-            monitored to prevent unauthorized usage.
-          </p>
-        </div>
-
-        {/* Section 4 */}
-        <div className={sectionStyle}>
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-purple-600 dark:text-purple-400">
-            4. Cookies & Tracking
-          </h2>
-          <p className="opacity-80 leading-relaxed text-lg">
-            We use cookies to enhance user experience, analyze traffic, and
-            personalize content. You can disable cookies through your browser
-            settings, but some features may not function properly.
-          </p>
-        </div>
-
-        {/* Section 5 */}
-        <div className={sectionStyle}>
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-pink-600 dark:text-pink-400">
-            5. Third-Party Services
-          </h2>
-          <p className="opacity-80 leading-relaxed text-lg">
-            We may use trusted third-party services such as payment gateways,
-            analytics tools, and cloud hosting providers. These partners follow
-            strict security and privacy standards.
-          </p>
-        </div>
-
-        {/* Section 6 */}
-        <div className={sectionStyle}>
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-blue-600 dark:text-blue-400">
-            6. Your Rights
-          </h2>
-          <p className="opacity-80 leading-relaxed text-lg">
-            You have the right to access, update, or delete your personal data.
-            You may contact us anytime to request data removal or clarification
-            about how your information is handled.
-          </p>
-        </div>
-
-        {/* Section 7 */}
-        <div className={sectionStyle}>
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-purple-600 dark:text-purple-400">
-            7. Changes To This Policy
-          </h2>
-          <p className="opacity-80 leading-relaxed text-lg">
-            We may update this Privacy Policy from time to time. Any changes
-            will be posted on this page with an updated revision date.
-          </p>
-        </div>
-
-        {/* Section 8 */}
-        <div className={sectionStyle}>
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 text-pink-600 dark:text-pink-400">
-            8. Contact Us
-          </h2>
-          <p className="opacity-80 leading-relaxed text-lg">
-            If you have any questions regarding this Privacy Policy, you may
-            contact our support team anytime for assistance.
-          </p>
-        </div>
-      </div>
-
-      {/* Footer */}
-      <div className="border-t border-black/5 dark:border-white/10 mt-10">
-        <div className="max-w-5xl mx-auto px-5 py-10 text-center opacity-60 text-sm">
-          © {new Date().getFullYear()} Your Company. All rights reserved.
-        </div>
       </div>
     </div>
-  )
+  );
 }
+
+export default PrivacyPolicy
