@@ -40,7 +40,6 @@ const Nav = () => {
     <div className="fixed top-6 left-0 right-0 z-[100] flex justify-center px-4">
       <nav className="relative flex items-center gap-1 p-1.5 rounded-full border border-white/10 bg-black/40 backdrop-blur-2xl shadow-2xl">
 
-        {/* ✅ SINGLE SHARED ACTIVE PILL */}
         <AnimatePresence>
           {activeItem && (
             <motion.div

@@ -195,33 +195,7 @@ const About = () => {
             {/* Center Line */}
             <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-cyan-500 via-purple-500 to-transparent md:-translate-x-1/2" />
             <UltimateTimeline />
-            {/* <div className="space-y-24">
-              <TimelineItem 
-                year="2018" title="Hello World" 
-                desc="Started coding journey. Built first static websites using HTML, CSS & Vanilla JS."
-                side="left"
-              />
-              <TimelineItem 
-                year="2020" title="Fullstack Developer" 
-                desc="Mastered MERN Stack. Launched first dynamic web apps with Node.js & React."
-                side="right"
-              />
-              <TimelineItem 
-                year="2022" title="Mobile & Cloud" 
-                desc="Expanded to React Native & iOS. Deployed scalable apps on AWS/Docker."
-                side="left"
-              />
-              <TimelineItem 
-                year="2024" title="AI & Architecture" 
-                desc="Building AI-First platforms. Integrating LLMs into EdTech & eCommerce."
-                side="right"
-              />
-              <TimelineItem 
-                year="Present" title="Senior Architect" 
-                desc="Helps To Developing the dream startup. Designing systems for millions of users."
-                side="left" current
-              />
-            </div> */}
+          
 
           </div>
         </section>
