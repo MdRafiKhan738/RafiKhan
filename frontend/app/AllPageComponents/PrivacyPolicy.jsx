@@ -33,10 +33,11 @@ const PrivacyPolicy = () => {
       } min-h-screen transition-colors duration-500 ease-in-out font-sans`}
     >
       {/* Scroll Progress Bar */}
-      <div
-        className="fixed top-0 left-0 h-[4px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 z-50 shadow-[0_0_15px_rgba(168,85,247,0.5)] transition-all duration-100 ease-out"
-        style={{ width: ${progress}% }}
-      />
+<div
+  className="fixed top-0 left-0 h-[4px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 z-50 shadow-[0_0_15px_rgba(168,85,247,0.5)] transition-all duration-100 ease-out"
+  style={{ width: `${progress}%` }}
+/>
+
 
       {/* Header Section */}
       <div className="max-w-5xl mx-auto px-5 pt-20 pb-10">

@@ -8,7 +8,8 @@ import {
   FaArrowUp, FaPhoneAlt, FaEnvelope 
 } from 'react-icons/fa';
 import rafipic from "../../public/RafiKhanLogo.png"; 
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation'
+
 
 const Footer = () => {
   const pathname = usePathname();
