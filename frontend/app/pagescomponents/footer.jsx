@@ -203,7 +203,7 @@ useEffect(() => {
                 <h3 className="text-xs uppercase tracking-[0.2em] font-bold text-gray-600 mb-6">Menu</h3>
                 <nav className="flex flex-col space-y-2">
                   {['Home', 'Services', 'Works', 'About', 'Contact'].map((item) => (
-                    <SwipeText key={item} label={item} href={`/${item.toLowerCase()}`} themeColor={theme.text} />
+                    <SwipeText key={item} label={item} href={item === "Home" ? "/" : `/${item.toLowerCase()}`} themeColor={theme.text} />
                   ))}
                 </nav>
              </div>
@@ -259,8 +259,8 @@ useEffect(() => {
                 <h3 className="text-xs uppercase tracking-[0.2em] font-bold text-gray-600 mb-6">Social Networks</h3>
                 <div className="flex flex-col space-y-2 md:items-end">
                   <SwipeText label="Github" href="https://github.com/MdRafiKhan738" themeColor={theme.text} alignRight />
-                  <SwipeText label="LinkedIn" href="https://linkedin.com/in/rafi-khan" themeColor={theme.text} alignRight />
-                  <SwipeText label="Facebook" href="https://facebook.com/rafi" themeColor={theme.text} alignRight />
+                  <SwipeText label="LinkedIn" href="https://www.linkedin.com/in/rafi-khan-25649a37b/" themeColor={theme.text} alignRight />
+                  <SwipeText label="Facebook" href="https://www.facebook.com/rafi.hossian.71" themeColor={theme.text} alignRight />
                   <SwipeText label="WhatsApp" href="https://wa.me/8801989678448" themeColor={theme.text} alignRight />
                 </div>
              </div>
