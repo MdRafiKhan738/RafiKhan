@@ -202,7 +202,7 @@ useEffect(() => {
              <div>
                 <h3 className="text-xs uppercase tracking-[0.2em] font-bold text-gray-600 mb-6">Menu</h3>
                 <nav className="flex flex-col space-y-2">
-                  {['Home', 'Services', 'Works', 'About', 'Contact'].map((item) => (
+                  {['Home', 'Services', 'testimonials', "projects",'About', 'Contact'].map((item) => (
                     <SwipeText key={item} label={item} href={item === "Home" ? "/" : `/${item.toLowerCase()}`} themeColor={theme.text} />
                   ))}
                 </nav>
