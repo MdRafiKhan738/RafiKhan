@@ -8,6 +8,7 @@ import {
   FaArrowUp, FaPhoneAlt, FaEnvelope 
 } from 'react-icons/fa';
 import rafipic from "../../public/RafiKhanLogo.png"; 
+import { useRouter } from 'next/router';
 
 const Footer = () => {
   const pathname = usePathname();
@@ -16,7 +17,7 @@ const Footer = () => {
     dhaka: { time: "--:--", ampm: "" },
     usa: { time: "--:--", ampm: "" },
   });
-
+const router=useRouter()
   // 1. Theme Logic (Dynamic Colors based on Route)
   const getTheme = () => {
     const themes = {
@@ -280,6 +281,9 @@ useEffect(() => {
         <div className="mt-20 pt-8 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-[10px] font-medium tracking-widest text-gray-600 uppercase">
               © {new Date().getFullYear()} Rafi Khan — All Rights Reserved.
+            </p>
+             <p className="text-[10px] font-medium tracking-widest text-gray-600 uppercase" onClick={()=>router.push("/privacypolicy")} style={{cursor:"pointer"}}>
+              Privacy & Policy
             </p>
             <div className="flex items-center gap-2">
               <span className="relative flex h-2 w-2">
