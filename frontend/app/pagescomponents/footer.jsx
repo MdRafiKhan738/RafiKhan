@@ -30,6 +30,14 @@ const router=useRouter()
         hover: "group-hover:text-blue-400",
         btn: "bg-blue-600 hover:bg-blue-500"
       },
+            '/privacypolicy': { 
+        name: "Red",
+        bg: "from-red-600 to-red-500", 
+        text: "text-red-400", 
+        border: "border-red-500/30",
+        hover: "group-hover:text-red-400",
+        btn: "bg-red-600 hover:bg-red-500"
+      },
        '/projects': { 
         name: "Purple",
         bg: "from-purple-600 to-cyan-500", 
