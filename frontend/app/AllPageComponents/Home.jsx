@@ -20,7 +20,7 @@ import Silk from '@/components/Silk'
 import RafiStars from '@/components/RafiStars'
 import { LayoutTextFlip } from '@/components/ui/LayoutTextFlip.jsx'
 import { cn } from "@/lib/utils"
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 /**
  * ⚡ RAFI'S ULTIMATE EMERALD PORTFOLIO - v5.0 (Mobile Touch Fix)
