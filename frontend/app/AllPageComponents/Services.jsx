@@ -187,7 +187,7 @@ const Services = () => {
                   {service.prepayment === 0 ? "NO PREPAYMENT" : `${service.prepayment.toLocaleString()} Tk`}
                 </span>
                    <span className={`font-bold ${service.prepayment === 0 ? "text-green-400" : "text-white"}`}>
-                  {service.prepayment === 0 ? "NO PREPAYMENT" : `${takaToUSD(service.prepayment)} USD`}
+                  {service.prepayment === 0 ? "0 USD" : `${takaToUSD(service.prepayment)} USD`}
                 </span>
               </div>
               
