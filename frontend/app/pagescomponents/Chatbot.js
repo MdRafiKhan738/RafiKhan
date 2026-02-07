@@ -8,7 +8,7 @@ export default function Chatbot() {
     <Script
       src="https://support-ai-tau.vercel.app/chatBot.js"
       strategy="afterInteractive" // loads after page is ready
-      data-owner-id="usr_111385257491563540"
+      data-owner-id="usr_111398252032557324"
     />
   );
 }
