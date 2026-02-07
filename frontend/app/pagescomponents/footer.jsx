@@ -17,6 +17,7 @@ const Footer = () => {
   const [timeData, setTimeData] = useState({
     dhaka: { time: "--:--", ampm: "" },
     usa: { time: "--:--", ampm: "" },
+    japan:{ time: "--:--", ampm: "" },
   });
 const router=useRouter()
   // 1. Theme Logic (Dynamic Colors based on Route)
@@ -116,7 +117,8 @@ useEffect(() => {
 
     setTimeData({
       dhaka: getTime("Asia/Dhaka"),           // Bangladesh (no DST)
-      usa: getTime("America/New_York"),       // USA (auto DST handled)
+      usa: getTime("America/New_York"),    
+      japan:getTime("Asia/Tokyo") 
     });
   };
 
@@ -202,6 +204,12 @@ useEffect(() => {
                     {timeData.usa.time}<span className="text-sm text-gray-600 ml-1">{timeData.usa.ampm}</span>
                   </p>
                   <p className="text-[10px] font-bold uppercase mt-1 text-gray-500">New York, USA</p>
+                </div>
+                  <div className="border-l border-white/10 pl-4">
+                  <p className="text-3xl font-mono text-gray-400 leading-none tracking-tighter">
+                    {timeData.japan.time}<span className="text-sm text-gray-600 ml-1">{timeData.japan.ampm}</span>
+                  </p>
+                  <p className="text-[10px] font-bold uppercase mt-1 text-gray-500">Tokoyo,Japan</p>
                 </div>
               </div>
             </div>
