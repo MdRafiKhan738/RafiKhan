@@ -17,7 +17,7 @@ export const metadata = {
   metadataBase: new URL("https://md-rafi-khan.vercel.app"),
 
   title: {
-    default: "Rafi Khan | #1 FullStack Developer Portfolio | AI, Web & Mobile Engineer",
+    default: "Rafi Khan | FullStack Developer Portfolio | AI, Web & Mobile Engineer",
     template: "%s | Rafi Khan"
   },
 
