@@ -4,6 +4,7 @@ import Nav from "./pagescomponents/Nav";
 import Footer from "./pagescomponents/footer";
 
 import Script from "next/script";
+import GlobalLoader from "./pagescomponents/GlobalLoader";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -87,6 +88,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <GlobalLoader/>
         <Nav />
         {children}
           <Script
