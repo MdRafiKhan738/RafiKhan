@@ -159,7 +159,7 @@ useEffect(() => {
       whileInView="visible"
       viewport={{ once: true }}
       variants={containerVariants}
-      className={`relative mt-20 bg-[#050505] text-gray-300 py-20 border-t ${theme.border} transition-colors duration-700 overflow-hidden`}
+      className={`relative  bg-[#050505] text-gray-300 py-20 border-t ${theme.border} transition-colors duration-700 overflow-hidden`}
     >
       {/* Background Ambient Glow */}
       <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[300px] bg-gradient-to-b ${theme.bg} opacity-[0.03] blur-[100px] pointer-events-none`} />
