@@ -82,7 +82,7 @@ const router=useRouter()
       btn: "bg-emerald-600 hover:bg-emerald-500"
     };
   };
-
+ const menu = ['Home', 'Services', 'testimonials', 'projects', 'About', 'Contact']
   const theme = getTheme();
 
   // 2. Accurate Time Logic (Runs only on client to avoid hydration mismatch)
@@ -225,6 +225,7 @@ useEffect(() => {
                   ))}
                 </nav>
              </div>
+   
              
              {/* DIRECT ACTION BUTTONS (New) */}
              <div className="mt-8 flex flex-col gap-3">
