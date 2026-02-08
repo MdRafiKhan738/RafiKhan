@@ -200,13 +200,13 @@ useEffect(() => {
                 </div>
                 {/* NYC Time */}
                 <div className="border-l border-white/10 pl-4">
-                  <p className="text-3xl font-mono text-gray-400 leading-none tracking-tighter">
+                  <p className={`text-3xl font-mono text-gray-400 leading-none tracking-tighter  ${theme.text}`}>
                     {timeData.usa.time}<span className="text-sm text-gray-600 ml-1">{timeData.usa.ampm}</span>
                   </p>
                   <p className="text-[10px] font-bold uppercase mt-1 text-gray-500">New York, USA</p>
                 </div>
                   <div className="border-l border-white/10 pl-4">
-                  <p className="text-3xl font-mono text-gray-400 leading-none tracking-tighter">
+                  <p className={`text-3xl font-mono text-gray-400 leading-none tracking-tighter  ${theme.text}`}>
                     {timeData.japan.time}<span className="text-sm text-gray-600 ml-1">{timeData.japan.ampm}</span>
                   </p>
                   <p className="text-[10px] font-bold uppercase mt-1 text-gray-500">Tokoyo,Japan</p>

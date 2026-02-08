@@ -1,12 +1,12 @@
 import React from 'react'
-import SkillGame from './Magicalblobs.jsx'
+
 
 
 const Projects = () => {
   return (
     <div>
-  
-     
+      Project is coming soon
+       
     </div>
   )
 }
