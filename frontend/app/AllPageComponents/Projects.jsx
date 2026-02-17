@@ -56,7 +56,7 @@ const Projects = () => {
     <section className="min-h-screen w-full bg-[#0f0518]   text-white py-20 px-4 relative overflow-hidden flex items-center justify-center font-sans">
       
       {/* Dynamic Animated Background Blobs */}
-      <div className="absolute top-0 left-0 w-full h-full mt-10 overflow-hidden z-0 pointer-events-none">
+      <div className="absolute top-0 left-0 w-full h-full mt-16 overflow-hidden z-0 pointer-events-none">
         <motion.div 
           animate={{ x: [0, 100, 0], y: [0, -50, 0], scale: [1, 1.2, 1] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
