@@ -193,7 +193,7 @@ const Projects = () => {
         {/* Coming Soon Teaser (Optional Footer for other projects) */}
         <motion.div variants={itemVariants} className="mt-20 text-center opacity-50 hover:opacity-100 transition-opacity">
           <p className="text-purple-300/60 text-sm tracking-[0.2em] uppercase animate-pulse">
-            More revolutionary projects loading...
+            More New Greatest Fullstack Project is comming soon ..Stay Connected
           </p>
         </motion.div>
 
