@@ -78,7 +78,7 @@ const Projects = () => {
       >
         {/* Section Header */}
         <motion.div variants={itemVariants} className="text-center mb-16">
-          <h2 className="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-purple-600 mb-4 drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]">
+          <h2 className="text-5xl md:text-7xl mt-14 font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-purple-600 mb-4 drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]">
             Featured Masterpiece
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
