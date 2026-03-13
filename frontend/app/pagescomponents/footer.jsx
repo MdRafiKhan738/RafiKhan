@@ -308,7 +308,7 @@ useEffect(() => {
                 <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${theme.bg} opacity-75`}></span>
                 <span className={`relative inline-flex rounded-full h-2 w-2 ${theme.bg}`}></span>
               </span>
-              <p className="text-[10px] font-bold tracking-widest text-gray-400 uppercase">Available for Fullstack developer and large scale projects.Also work as a remote developer</p>
+              <p className="text-[10px] font-bold tracking-widest text-gray-400 uppercase">Available for Fullstack development and large scale projects.Also work as a remote fullstack developer</p>
             </div>
         </div>
       </div>
