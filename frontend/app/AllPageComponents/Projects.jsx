@@ -146,7 +146,7 @@ const Projects = () => {
             Engineering Masterpieces
           </h2>
           <p className="text-blue-200/70 text-lg max-w-3xl mx-auto font-light tracking-wide">
-            Showcasing a portfolio of hyper-scalable, highly-secured, and real-time fullstack ecosystems.
+          My Fullstack projects .Fully Open Source project for helping learners.
           </p>
         </motion.div>
 
@@ -265,7 +265,7 @@ const Projects = () => {
         <motion.div variants={itemVariants} className="mt-12 text-center opacity-60 hover:opacity-100 transition-opacity">
           <p className="text-cyan-400 text-sm tracking-[0.3em] uppercase font-bold flex items-center justify-center gap-3">
             <RefreshCw size={16} className="animate-spin-slow" />
-            System Expanding • More Projects Pending
+            More New Project is Coming .Stay Connected ❤️....
           </p>
         </motion.div>
 
