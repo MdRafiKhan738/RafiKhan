@@ -22,7 +22,7 @@ import {
 // COMPONENTS
 import Silk from '@/components/Silk'
 import RafiStars from '@/components/RafiStars'
-import rafipic from '../../public/RafiKhanLogo.png'
+import rafipic from '../../public/RafiKhanLogo.png.jpeg'
 import UltimateTimeline from './Myevolution'
 
 /* ================= ANIMATION VARIANTS ================= */
