@@ -7,7 +7,7 @@ import {
   FaFacebookF, FaLinkedinIn, FaGithub, FaWhatsapp, 
   FaArrowUp, FaPhoneAlt, FaEnvelope 
 } from 'react-icons/fa';
-import rafipic from "../../public/RafiKhanLogo.png"; 
+import rafipic from "../../public/RafiKhanLogo.png.jpeg"; 
 import { useRouter } from 'next/navigation'
 
 
