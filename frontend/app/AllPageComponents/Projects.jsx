@@ -146,7 +146,7 @@ const Projects = () => {
             Engineering Masterpieces
           </h2>
           <p className="text-blue-200/70 text-lg max-w-3xl mx-auto font-light tracking-wide">
-          My Fullstack projects .Fully Open Source project for helping learners.
+          My Fullstack enterprise projects.I makes some open source projects for helping learners
           </p>
         </motion.div>
 
