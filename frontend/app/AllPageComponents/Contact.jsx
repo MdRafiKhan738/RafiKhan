@@ -172,7 +172,7 @@ export default function ContactPage() {
           <div className="mt-12">
             <p className="text-gray-500 text-sm mb-4">Connect with me on</p>
             <div className="flex gap-4">
-              <SocialIcon href="https://github.com/MdRafiKhan738" icon={<FaGithub />} />
+              <SocialIcon href="https://github.com/rafihushen01" icon={<FaGithub />} />
               <SocialIcon href="https://www.facebook.com/rafi.hossian.71" icon={<FaFacebook />} />
               <SocialIcon href="https://www.linkedin.com/in/rafi-khan-25649a37b/" icon={<FaLinkedin />} />
             </div>
