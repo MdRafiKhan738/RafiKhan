@@ -39,7 +39,7 @@ const Projects = () => {
   const projectsData = [
     {
       id: "khancosmetics",
-      title: "KhanCosmetics",
+      title: "GlowHaat",
       subtitle: "Enterprise Daraz-Level Ecommerce Ecosystem",
       description: "My biggest ongoing commercial project and personal business platform. A massive, highly scalable architecture featuring six distinct operational panels.",
       highlight: "Next.js Enterprise Architecture",
@@ -85,9 +85,9 @@ const Projects = () => {
       roles: ['User', 'Admin'],
       links: [
         { label: "Live User Site", url: "https://onecartt.vercel.app", type: "live" },
-        { label: "Live Admin Panel", url: "https://onecartadmin-gules.vercel.app", type: "live" },
+    
         { label: "Frontend Repo", url: "https://github.com/MdRafiKhan738/ecommerce-web/tree/main/frontend", type: "github" },
-        { label: "Admin Repo", url: "https://github.com/MdRafiKhan738/ecommerce-web/tree/main/Admin", type: "github" },
+    
         { label: "Backend Repo", url: "https://github.com/MdRafiKhan738/ecommerce-web/tree/main/backend", type: "github" }
       ]
     },
