@@ -177,9 +177,9 @@ useEffect(() => {
                </div>
                <div>
                  <h2 className="text-3xl font-black text-white tracking-tight leading-none">
-                   RAFI <span className={theme.text}>KHAN</span>
+                  Mohammad RAFI <span className={theme.text}>KHAN</span>
                  </h2>
-                 <p className="text-xs text-gray-500 font-medium tracking-widest mt-1">Working As a fullstack developer</p>
+                 <p className="text-xs text-gray-500 font-medium tracking-widest mt-1">Working As a Fullstack Developer,Tech Partner & Leadership</p>
                </div>
             </div>
             
@@ -299,7 +299,7 @@ useEffect(() => {
         {/* Footer Bottom */}
         <div className="mt-20 pt-8 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-[10px] font-medium tracking-widest text-gray-600 uppercase">
-              © {new Date().getFullYear()} Rafi Khan — All Rights Reserved.
+              © {new Date().getFullYear()} Mohammad Rafi Khan — All Rights Reserved.
             </p>
              <p className="text-[10px] font-medium tracking-widest text-gray-600 uppercase" onClick={()=>router.push("/privacypolicy")} style={{cursor:"pointer"}}>
               Privacy & Policy
@@ -309,7 +309,7 @@ useEffect(() => {
                 <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${theme.bg} opacity-75`}></span>
                 <span className={`relative inline-flex rounded-full h-2 w-2 ${theme.bg}`}></span>
               </span>
-              <p className="text-[10px] font-bold tracking-widest text-gray-400 uppercase">Available for Fullstack development and large scale projects.Also work as a remote fullstack developer</p>
+              <p className="text-[10px] font-bold tracking-widest text-gray-400 uppercase">Available for Fullstack Development,Scalable Sass Platforms,Tech or Development Partner 🤍</p>
             </div>
         </div>
       </div>
