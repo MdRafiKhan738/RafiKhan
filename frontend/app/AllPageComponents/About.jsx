@@ -157,8 +157,9 @@ const About = () => {
                 'Real-time chat & push notifications',
                 'Secure, cookie-based authentication',
                 'App Store & Play Store deployment',
-                'AI-integrated mobile experiences',
+                'Rag AI-integrated  mobile experiences',
                 'Native device features (camera, GPS)',
+                
               ]}
             />
             <DomainCard
@@ -166,11 +167,17 @@ const About = () => {
               icon={<Globe size={28} className="text-cyan-400" />}
               items={[
                 'Next.js & React enterprise architecture',
-                'AI-integrated SaaS platforms',
+                'Rag AI-integrated SaaS platforms',
                 'Complex dashboards & analytics',
                 'SEO-optimized, high-performance builds',
+                "AI powered platform for real growth ",
+                "GIANT SchoolManagmentSoftware,ERP,HRM,CRM SYSTEMS",
+                "ETHICAL Hacking test",
+                "AWS,EC2,ECS,CLOUDINARY,VPS HOSTING",
+                "Extreamly fast loaded website ",
+                "SASS Platforms",
                 'Secure payment gateways (Stripe/SSL)',
-                'Multi-vendor & role-based admin panels',
+                'Multi-vendor & role-based almost 3-13 panels',
               ]}
             />
           </div>
