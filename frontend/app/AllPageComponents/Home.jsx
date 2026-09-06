@@ -81,7 +81,7 @@ const Home = () => {
                   "Microservice System Design Expert",
                 'UI/UX Visionary',
                 'Next.js Specialist',
-                  "Reactjs Developer,
+                  "Reactjs Developer",
                   "Ethical Hacker",
                   "Bug Bounty Expert",
                   "Red teaming ,Blue Teaming ",
