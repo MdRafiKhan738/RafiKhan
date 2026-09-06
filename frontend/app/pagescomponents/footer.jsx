@@ -177,7 +177,7 @@ useEffect(() => {
                </div>
                <div>
                  <h2 className="text-3xl font-black text-white tracking-tight leading-none">
-                  Mohammad RAFI <span className={theme.text}>KHAN</span>
+                   RAFI <span className={theme.text}>KHAN</span>
                  </h2>
                  <p className="text-xs text-gray-500 font-medium tracking-widest mt-1">Working As a Fullstack Developer,Tech Partner & Leadership</p>
                </div>
