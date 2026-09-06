@@ -22,12 +22,6 @@ import { LayoutTextFlip } from '@/components/ui/LayoutTextFlip.jsx'
 import { cn } from "@/lib/utils"
 import { useRouter } from 'next/navigation';
 
-/**
- * ⚡ RAFI'S ULTIMATE EMERALD PORTFOLIO - v5.0 (Mobile Touch Fix)
- * - Fixed "Sticky Hover" bug on mobile devices.
- * - Added `whileTap` animation for better mobile feedback.
- * - Optimized Navbar for all screen sizes.
- */
 
 const Home = () => {
   const router=useRouter()
@@ -62,8 +56,8 @@ const Home = () => {
             className="text-[11vw] sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold leading-[0.95] tracking-tighter text-white"
           >
             Developing the <br />
-            <span className="text-emerald-500 inline-block hover:scale-[1.02] transition-transform duration-500 cursor-default text-shadow-glow">Future</span> 
-            <span className="text-white/90"> of Web & Mobile Application.</span>
+            <span className="text-emerald-500 inline-block hover:scale-[1.02] transition-transform duration-500 cursor-default text-shadow-glow">Scalable And Sass </span> 
+            <span className="text-white/90"> Web & Mobile Application.</span>
           </motion.h1>
 
           {/* Flip Text Animation */}
@@ -83,24 +77,33 @@ const Home = () => {
                 words={[
                   'Fullstack Developer',
                 'Frontend Engineer',
-                'Backend Engineer',
+                'Senior Backend Engineer',
+                  "Microservice System Design Expert",
                 'UI/UX Visionary',
                 'Next.js Specialist',
-                'Ecommerce Specialist',
-                'Ai Developer',
+                  "Reactjs Developer,
+                  "Ethical Hacker",
+                  "Bug Bounty Expert",
+                  "Red teaming ,Blue Teaming ",
+                  "Tech Leader ",
+                'Giant Scalable Sass Ecommerce Specialist',
+                'Ai Agent Developer',
                 "Open Source Contributor",
+                  "Laraval Developer",
+                  "C,C++ Developer",
                 "Tech Enthusiast",
-                "Amazing Animated Websites Developer",
-                "React Guru",
+                "Rag Developer",
+                  "Linux ,Ubuntu ,ci/cd pipline expert",
+                "Unique Problem Solver",
                 "JavaScript Ninja",
+                  "Raw Java Developer",
                 "React Native Developer",
                 "Mobile App Developer",
                 "Python Expert",
                 "Database Expert",
-                "Data Scientist",
-                "Ios Developer",
-                "Android Developer",
-                "Bug Fixing Expert",
+                "Rust Developer",
+                "HRM,CRM,SASS Developer",
+                "Giant School Managment Software Developer"
                 ]}
                 duration={2500}
               />
@@ -114,8 +117,7 @@ const Home = () => {
             transition={{ delay: 0.6 }}
             className="max-w-2xl text-sm sm:text-base md:text-xl lg:text-2xl leading-relaxed text-neutral-300"
           >
-            I craft <span className="text-emerald-400 font-medium border-b border-emerald-500/30">Ultra-premium digital platforms</span> where high-performance ,secure large-scale applications meet stunning design. Bridging the gap where software
-            engineering meets cinematic visual storytelling.
+            I Am<span className="text-emerald-400 font-medium border-b border-emerald-500/30">Building scalable solutions for the web and mobile applications.Turning complex web & mobile app challenges into scalable, elegant solutions. 
           </motion.p>
 
           {/* Actions */}
