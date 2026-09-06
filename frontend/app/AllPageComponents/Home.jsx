@@ -68,7 +68,7 @@ const Home = () => {
             className="flex flex-wrap items-center overflow-hidden gap-2 sm:gap-3"
           >
             <span className="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white/60">
-              Hi, I am Rafi. Worked as a
+              Hi, I am Rafi. Working as a
             </span>
             <div className="h-8 sm:h-12 md:h-16 overflow-hidden flex items-center">
                <LayoutTextFlip
