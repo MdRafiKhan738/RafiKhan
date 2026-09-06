@@ -84,7 +84,7 @@ const About = () => {
               <button onClick={() => router.push('/contact')} className="group relative px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-black rounded-full font-bold text-lg transition-all flex items-center gap-3 shadow-[0_0_20px_rgba(34,211,238,0.4)]">
                 Work With Me <ArrowRight className="group-hover:translate-x-1 transition" />
               </button>
-              <a   href="/Rafi_Khan_Cv.pdf.jpeg" download className="px-8 py-4 rounded-full border border-white/20 hover:bg-white/10 text-white font-medium transition-all flex items-center gap-2 backdrop-blur-md">
+              <a   href="/Mohammad_Rafi_Khan_Resume.docx" download className="px-8 py-4 rounded-full border border-white/20 hover:bg-white/10 text-white font-medium transition-all flex items-center gap-2 backdrop-blur-md">
                 <Download size={20} /> Download CV
               </a>
             </motion.div>
