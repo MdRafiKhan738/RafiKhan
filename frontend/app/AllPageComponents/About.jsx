@@ -185,7 +185,7 @@ const About = () => {
 
         {/* ================= TECH STACK ================= */}
         <section className="space-y-14 sm:space-y-16">
-          <SectionHeader title="Languages & technologies" caption="Full-stack expertise" />
+          <SectionHeader title="Languages & technologies What Pay My Bill" caption="Full-stack expertise" />
           <StackSection title="Frontend & UI" icon={<Layers size={20} />} items={frontend} />
           <StackSection title="Backend & Cloud" icon={<Server size={20} />} items={backend} />
           <StackSection title="AI & Data" icon={<Brain size={20} />} items={ai} />
