@@ -114,7 +114,7 @@ const About = () => {
 
         {/* ================= STATS BAR ================= */}
         <section className="grid grid-cols-3 gap-4 sm:gap-8 py-8 sm:py-10 border-y border-white/10 max-w-3xl mx-auto">
-          <Stat value="3+" label="Years Experience" />
+          <Stat value="4+" label="Years Experience" />
           <Stat value="25+" label="Projects Delivered" />
           <Stat value="15+" label="Students Mentored" />
         </section>
@@ -405,11 +405,12 @@ const journey = [
     period: '2024 — 2025',
     role: 'Fullstack Developer',
     org: 'MuchiBari',
+     url: 'https://www.facebook.com/muchibari01'
   },
   {
     period: '2025',
-    role: 'Remote Developer, Freelance',
-    org: 'Upwork',
+    role: 'Remote Developer, Freelance for USA,FINLAND,NEW YORK Clients',
+    org: 'Freelance Platforms',
   },
   {
     period: '2025 (6 mo) — Present',
