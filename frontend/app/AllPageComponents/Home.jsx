@@ -117,7 +117,7 @@ const Home = () => {
             transition={{ delay: 0.6 }}
             className="max-w-2xl text-sm sm:text-base md:text-xl lg:text-2xl leading-relaxed text-neutral-300"
           >
-            I Am<span className="text-emerald-400 font-medium border-b border-emerald-500/30">Building scalable solutions for the web and mobile applications.Turning complex web & mobile app challenges into scalable, elegant solutions. 
+            I Am<span className="text-emerald-400 font-medium border-b border-emerald-500/30">Building scalable solutions for the web and mobile applications.Turning complex web & mobile app challenges into scalable, elegant solutions. </span>
           </motion.p>
 
           {/* Actions */}
