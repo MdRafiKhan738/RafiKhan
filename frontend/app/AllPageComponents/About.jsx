@@ -3,127 +3,124 @@
 import React from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
-import { motion, useScroll, useSpring } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 // ICONS
 import {
   SiReact, SiNextdotjs, SiNodedotjs, SiMongodb, SiPostgresql,
-  SiTailwindcss, SiFramer, SiPython, SiCplusplus, SiRust,
+  SiTailwindcss, SiFramer, SiPython, SiRust,
   SiTypescript, SiJavascript, SiExpress, SiDocker, SiRedis,
-  SiAmazon, SiFirebase, SiNginx, SiFastapi, SiLangchain,
+  SiAmazon, SiFirebase, SiNginx, SiFastapi, SiLangchain, SiGithub,
 } from 'react-icons/si'
 import {
   Download, ArrowRight, Cpu, Brain, Layers, Server, Smartphone,
   ShoppingBag, Zap, CheckCircle2, Globe, Code2, Boxes, Sparkles,
+  Mail, Briefcase, GraduationCap,
 } from 'lucide-react'
 
-// COMPONENTS (existing project components — unchanged)
-import Silk from '@/components/Silk'
-import RafiStars from '@/components/RafiStars'
 import rafipic from '../../public/RafiKhanLogo.png.jpeg'
-import UltimateTimeline from './Myevolution'
 
 /* =====================================================================
-   DESIGN NOTES
-   Same palette as before (navy #020617 base, cyan → blue → purple accent),
-   but pulled back from "everything glows and spins" toward a calmer,
-   more deliberate hierarchy: one motion moment in the hero, quiet cards
-   everywhere else, and a single accent used consistently rather than
-   scattered glow effects on every element.
+   Silk / RafiStars removed — background is a plain layered gradient now,
+   so the page stays quiet instead of competing with the content.
    ===================================================================== */
 
 const About = () => {
   const router = useRouter()
-  const { scrollYProgress } = useScroll()
-  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 })
 
   return (
     <main className="relative min-h-screen w-full bg-[#020617] text-white overflow-x-hidden selection:bg-cyan-500/30">
 
-      {/* progress bar */}
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 origin-left z-50"
-        style={{ scaleX }}
-      />
-
-      {/* background */}
+      {/* static background — no shader, no stars, just a soft layered glow */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <Silk speed={2} scale={1.6} color="#22d3ee" noiseIntensity={0.3} />
-        <RafiStars />
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full bg-cyan-500/10 blur-[160px]" />
+        <div className="absolute top-1/3 -right-40 w-[600px] h-[600px] rounded-full bg-purple-500/10 blur-[160px]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#020617_92%)]" />
       </div>
 
       <div className="relative z-10 max-w-[1440px] mx-auto px-5 sm:px-8 md:px-12 xl:px-20 pt-20 sm:pt-28 pb-24 sm:pb-32 space-y-28 sm:space-y-36">
 
         {/* ================= HERO ================= */}
-        <section className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center min-h-0 lg:min-h-[80vh]">
-          <div className="space-y-7 order-2 lg:order-1">
-            <motion.div
-              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/40 border border-cyan-500/30 text-cyan-300 text-sm font-medium"
-            >
-              <Zap size={14} /> Senior Full-Stack Developer
-            </motion.div>
+        <section className="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-start">
+          <div className="space-y-6 order-2 lg:order-1">
+            <span className="text-slate-400 text-sm">Meet</span>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.05 }}
-              className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight leading-[1.12]"
-            >
-              Building advanced,
-              <br className="hidden sm:block" /> secure platforms{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400">
-                end to end
-              </span>
-            </motion.h1>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-[1.1] text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400">
+              Mohammad Rafi Khan
+            </h1>
 
-            <motion.p
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.15 }}
-              className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-lg font-light"
-            >
-              I engineer high-scale web and mobile ecosystems — from AI-powered
-              platforms to multi-vendor marketplaces built to handle real production traffic.
-            </motion.p>
+            <p className="text-slate-300 text-base sm:text-lg">
+              Senior Fullstack Developer, building AI-integrated web &amp; mobile platforms.
+            </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }}
-              className="flex flex-wrap gap-4 pt-2"
-            >
+            <div className="pt-2">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="w-1 h-5 bg-cyan-400 rounded-full" />
+                <h2 className="text-sm font-semibold tracking-wide text-white">ABOUT ME</h2>
+              </div>
+              <ul className="space-y-3">
+                {[
+                  'Delivered 25+ platforms across e-commerce, AI, logistics, and real estate.',
+                  'Currently Fullstack Developer at Webin, building products for agency clients.',
+                  'Mentored 15+ aspiring developers while shipping AI-integrated platforms.',
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3 text-slate-300 text-sm sm:text-base">
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2 shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="flex flex-wrap gap-4 pt-4">
+              <button
+                onClick={() => router.push('/projects')}
+                className="group px-6 py-3 bg-cyan-400 hover:bg-cyan-300 text-[#020617] rounded-full font-semibold text-sm sm:text-base transition-colors flex items-center gap-2"
+              >
+                My Work <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </button>
               <button
                 onClick={() => router.push('/contact')}
-                className="group px-6 sm:px-7 py-3.5 bg-cyan-400 hover:bg-cyan-300 text-[#020617] rounded-full font-semibold text-base transition-colors flex items-center gap-2"
+                className="px-6 py-3 rounded-full border border-white/15 hover:border-white/30 hover:bg-white/5 text-white font-medium text-sm sm:text-base transition-colors"
               >
-                Work with me <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                Contact Me
               </button>
-              <a
-                href="/Mohammad_Rafi_Khan_Resume.docx" download
-                className="px-6 sm:px-7 py-3.5 rounded-full border border-white/15 hover:border-white/30 hover:bg-white/5 text-white font-medium transition-colors flex items-center gap-2"
-              >
-                <Download size={18} /> Download CV
-              </a>
-            </motion.div>
+            </div>
+
+            <div className="flex items-center gap-3 pt-2">
+              <SocialIcon href="https://github.com/rafihushen01" icon={<SiGithub size={16} />} />
+              <SocialIcon href="mailto:nextjs061@gmail.com" icon={<Mail size={16} />} />
+              <SocialIcon href="https://mdrafikhan.vercel.app" icon={<Globe size={16} />} />
+            </div>
           </div>
 
-          {/* profile image — no spinning rings, one quiet accent ring, scales cleanly to mobile */}
+          {/* photo card */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8 }}
-            className="flex justify-center order-1 lg:order-2"
+            initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7 }}
+            className="order-1 lg:order-2 mx-auto lg:mx-0 w-full max-w-[340px] sm:max-w-[400px] lg:max-w-none"
           >
-            <div className="relative w-[220px] h-[220px] xs:w-[260px] xs:h-[260px] sm:w-[320px] sm:h-[320px] md:w-[380px] md:h-[380px] lg:w-[420px] lg:h-[420px]">
-              <div className="absolute inset-0 rounded-full bg-cyan-500/15 blur-[90px]" />
-              <div className="absolute inset-[-8px] rounded-full border border-cyan-500/25" />
-              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/10 z-10">
-                <Image src={rafipic} alt="Mohammad Rafi Khan" className="object-cover" fill priority />
-              </div>
-
-              {/* two quiet floating badges, hidden on small screens to avoid overlap */}
-              <FloatingIcon icon={<SiNextdotjs />} color="#ffffff" top="4%" right="-4%" delay={0} />
-              <FloatingIcon icon={<SiReact />} color="#61dafb" bottom="6%" left="-6%" delay={1.4} />
+            <div className="relative rounded-3xl overflow-hidden border border-white/10 aspect-[4/5]">
+              <Image
+                src={rafipic}
+                alt="Mohammad Rafi Khan"
+                fill
+                priority
+                className="object-cover grayscale-[15%] contrast-[1.05]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent" />
             </div>
           </motion.div>
         </section>
 
+        {/* ================= STATS BAR ================= */}
+        <section className="grid grid-cols-3 gap-4 sm:gap-8 py-8 sm:py-10 border-y border-white/10 max-w-3xl mx-auto">
+          <Stat value="3+" label="Years Experience" />
+          <Stat value="25+" label="Projects Delivered" />
+          <Stat value="15+" label="Students Mentored" />
+        </section>
+
         {/* ================= WHO I AM ================= */}
-        <section className="max-w-4xl mx-auto text-center space-y-8">
+        <section className="max-w-3xl mx-auto text-center space-y-7">
           <Caption text="Who I am" />
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
             Turning complex problems into{' '}
@@ -140,13 +137,7 @@ const About = () => {
             through to launch.
           </p>
 
-          <div className="grid grid-cols-3 gap-4 sm:gap-8 pt-6 max-w-lg mx-auto">
-            <Stat value="3+" label="Years Experience" />
-            <Stat value="25+" label="Projects Delivered" />
-            <Stat value="15+" label="Students Mentored" />
-          </div>
-
-          <div className="inline-flex flex-col gap-1 mt-6 px-6 py-5 rounded-2xl bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-white/10">
+          <div className="inline-flex flex-col gap-1 mt-4 px-6 py-5 rounded-2xl bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-white/10">
             <span className="text-sm font-semibold text-cyan-300">Always learning</span>
             <span className="text-slate-300 text-sm italic">
               "Continuous improvement is better than delayed perfection."
@@ -197,31 +188,11 @@ const About = () => {
         <section>
           <SectionHeader title="What I offer" caption="Services" subtitle="High-impact solutions for businesses and startups." />
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mt-12 sm:mt-14">
-            <ServiceCard
-              icon={<Code2 size={22} />}
-              title="Web app development"
-              desc="Scalable, high-performance web apps using Next.js, React, and Laravel with pixel-perfect UI."
-            />
-            <ServiceCard
-              icon={<Smartphone size={22} />}
-              title="Mobile app development"
-              desc="Cross-platform Android & iOS applications using React Native."
-            />
-            <ServiceCard
-              icon={<Sparkles size={22} />}
-              title="AI & automation"
-              desc="LLM integrations, AI-powered workflows, and business process automation."
-            />
-            <ServiceCard
-              icon={<Server size={22} />}
-              title="Backend & cloud"
-              desc="Robust REST APIs, microservices, Docker, AWS (EC2, S3), Redis, and CI/CD pipelines."
-            />
-            <ServiceCard
-              icon={<Boxes size={22} />}
-              title="Enterprise solutions"
-              desc="Custom ERP, CRM, HRM systems, and e-commerce platforms tailored to business needs."
-            />
+            <ServiceCard icon={<Code2 size={22} />} title="Web app development" desc="Scalable, high-performance web apps using Next.js, React, and Laravel with pixel-perfect UI." />
+            <ServiceCard icon={<Smartphone size={22} />} title="Mobile app development" desc="Cross-platform Android & iOS applications using React Native." />
+            <ServiceCard icon={<Sparkles size={22} />} title="AI & automation" desc="LLM integrations, AI-powered workflows, and business process automation." />
+            <ServiceCard icon={<Server size={22} />} title="Backend & cloud" desc="Robust REST APIs, microservices, Docker, AWS (EC2, S3), Redis, and CI/CD pipelines." />
+            <ServiceCard icon={<Boxes size={22} />} title="Enterprise solutions" desc="Custom ERP, CRM, HRM systems, and e-commerce platforms tailored to business needs." />
           </div>
         </section>
 
@@ -229,30 +200,20 @@ const About = () => {
         <section>
           <SectionHeader title="Tech arsenal" caption="At a glance" />
           <div className="grid sm:grid-cols-3 gap-5 sm:gap-6 mt-12 sm:mt-14">
-            <ArsenalGroup
-              title="Languages"
-              tone="cyan"
-              items={['TypeScript', 'JavaScript', 'Python', 'Rust', 'C', 'C++']}
-            />
-            <ArsenalGroup
-              title="Frameworks"
-              tone="blue"
-              items={['Next.js', 'React.js', 'Express.js', 'FastAPI', 'Laravel']}
-            />
-            <ArsenalGroup
-              title="Cloud & AI"
-              tone="purple"
-              items={['Docker', 'Nginx', 'Redis', 'AWS', 'Firebase', 'LangChain', 'LangGraph', 'MongoDB', 'PostgreSQL', 'Qdrant']}
-            />
+            <ArsenalGroup title="Languages" tone="cyan" items={['TypeScript', 'JavaScript', 'Python', 'Rust', 'C', 'C++']} />
+            <ArsenalGroup title="Frameworks" tone="blue" items={['Next.js', 'React.js', 'Express.js', 'FastAPI', 'Laravel']} />
+            <ArsenalGroup title="Cloud & AI" tone="purple" items={['Docker', 'Nginx', 'Redis', 'AWS', 'Firebase', 'LangChain', 'LangGraph', 'MongoDB', 'PostgreSQL', 'Qdrant']} />
           </div>
         </section>
 
-        {/* ================= EVOLUTION TIMELINE ================= */}
-        <section className="max-w-5xl mx-auto">
-          <SectionHeader title="The evolution" caption="My journey" />
-          <div className="relative mt-16 sm:mt-20">
-            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-cyan-500/60 via-purple-500/40 to-transparent md:-translate-x-1/2" />
-            <UltimateTimeline />
+        {/* ================= PROFESSIONAL JOURNEY (custom timeline) ================= */}
+        <section className="max-w-4xl mx-auto">
+          <SectionHeader title="Professional journey" caption="Career path" />
+          <div className="relative mt-16 sm:mt-20 space-y-10 sm:space-y-0">
+            <div className="hidden sm:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-cyan-500/50 via-purple-500/30 to-transparent -translate-x-1/2" />
+            {journey.map((item, i) => (
+              <JourneyItem key={i} {...item} side={i % 2 === 0 ? 'left' : 'right'} />
+            ))}
           </div>
         </section>
 
@@ -264,9 +225,7 @@ const About = () => {
           transition={{ duration: 0.7 }}
           className="text-center py-16 sm:py-24 px-6 rounded-[2rem] sm:rounded-[3rem] bg-gradient-to-br from-cyan-900/15 to-purple-900/15 border border-white/10"
         >
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-5">
-            Have a big idea?
-          </h2>
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-5">Have a big idea?</h2>
           <p className="text-base sm:text-xl text-slate-300 mb-8 sm:mb-10 max-w-xl mx-auto">
             Let's build the application or platform that defines your next stage of growth.
           </p>
@@ -287,9 +246,7 @@ export default About
 
 /* ================= SUB-COMPONENTS ================= */
 
-const Caption = ({ text }) => (
-  <span className="text-cyan-400 text-sm font-medium tracking-wide">{text}</span>
-)
+const Caption = ({ text }) => <span className="text-cyan-400 text-sm font-medium tracking-wide">{text}</span>
 
 const SectionHeader = ({ title, caption, subtitle }) => (
   <motion.div
@@ -312,15 +269,15 @@ const Stat = ({ value, label }) => (
   </div>
 )
 
-const FloatingIcon = ({ icon, color, top, left, right, bottom, delay }) => (
-  <motion.div
-    animate={{ y: [0, -10, 0] }}
-    transition={{ repeat: Infinity, duration: 4, delay, ease: 'easeInOut' }}
-    style={{ top, left, right, bottom, color }}
-    className="hidden sm:flex absolute text-2xl bg-[#0b1120] p-2.5 rounded-xl border border-white/10 z-20 items-center justify-center"
+const SocialIcon = ({ href, icon }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-slate-300 hover:text-white hover:border-white/30 transition-colors"
   >
     {icon}
-  </motion.div>
+  </a>
 )
 
 const DomainCard = ({ title, icon, items }) => (
@@ -347,9 +304,7 @@ const ServiceCard = ({ icon, title, desc }) => (
     transition={{ duration: 0.5 }}
     className="p-6 sm:p-7 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-cyan-500/30 transition-colors"
   >
-    <div className="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-4">
-      {icon}
-    </div>
+    <div className="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-4">{icon}</div>
     <h3 className="text-lg font-semibold mb-2">{title}</h3>
     <p className="text-slate-400 text-sm leading-relaxed">{desc}</p>
   </motion.div>
@@ -370,10 +325,7 @@ const ArsenalGroup = ({ title, items, tone }) => {
       <h3 className="text-base font-semibold text-white mb-5">{title}</h3>
       <div className="flex flex-wrap gap-2">
         {items.map((item, i) => (
-          <span
-            key={i}
-            className={`px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium border ${toneMap[tone]}`}
-          >
+          <span key={i} className={`px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium border ${toneMap[tone]}`}>
             {item}
           </span>
         ))}
@@ -392,9 +344,7 @@ const StackSection = ({ title, icon, items }) => (
       <span className="text-cyan-400">{icon}</span> {title}
     </div>
     <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3 sm:gap-5">
-      {items.map((item, idx) => (
-        <Tech key={idx} {...item} />
-      ))}
+      {items.map((item, idx) => <Tech key={idx} {...item} />)}
     </div>
   </motion.div>
 )
@@ -409,6 +359,66 @@ const Tech = ({ icon, label, color }) => (
     <span className="text-[11px] sm:text-xs font-medium text-slate-400 text-center">{label}</span>
   </motion.div>
 )
+
+/* ---- custom timeline (replaces UltimateTimeline / Myevolution import) ---- */
+
+const JourneyItem = ({ period, role, org, url, current, side }) => {
+  const isLeft = side === 'left'
+  const card = (
+    <motion.div
+      initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className={`w-full sm:w-[calc(50%-2rem)] p-5 sm:p-6 rounded-2xl border backdrop-blur-sm ${
+        current ? 'bg-cyan-500/[0.06] border-cyan-500/30' : 'bg-white/[0.03] border-white/10'
+      }`}
+    >
+      <span className="text-cyan-400 text-xs sm:text-sm font-medium block mb-2">{period}</span>
+      <h3 className="text-base sm:text-lg font-semibold text-white mb-1">{role}</h3>
+      {url ? (
+        <a href={url} target="_blank" rel="noopener noreferrer" className="text-slate-400 text-sm hover:text-cyan-300 transition-colors underline decoration-white/20">
+          {org}
+        </a>
+      ) : (
+        <span className="text-slate-400 text-sm">{org}</span>
+      )}
+    </motion.div>
+  )
+
+  return (
+    <div className={`relative flex sm:items-center gap-6 sm:gap-0 ${isLeft ? 'sm:justify-start' : 'sm:justify-end'} pb-10 sm:pb-16`}>
+      <div className="hidden sm:block absolute left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-[#020617] border-2 border-cyan-400" />
+      {card}
+    </div>
+  )
+}
+
+const journey = [
+  {
+    period: '2022 — 2024',
+    role: 'Fullstack Web Developer',
+    org: 'BAF Shaheen English Medium College (SEMC)',
+    url: 'https://bafsemc.edu.bd/',
+  },
+  {
+    period: '2024 — 2025',
+    role: 'Fullstack Developer',
+    org: 'MuchiBari',
+  },
+  {
+    period: '2025',
+    role: 'Remote Developer, Freelance',
+    org: 'Upwork',
+  },
+  {
+    period: '2025 (6 mo) — Present',
+    role: 'Senior Fullstack Developer',
+    org: 'Webin',
+    url: 'https://webin.agency',
+    current: true,
+  },
+]
 
 /* ================= DATA ================= */
 
