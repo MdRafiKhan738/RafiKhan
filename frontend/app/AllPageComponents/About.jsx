@@ -60,7 +60,7 @@ const About = () => {
               </div>
               <ul className="space-y-3">
                 {[
-                  'Delivered 25+ platforms across e-commerce, AI, logistics, and real estate.',
+                  'Delivered 25+ platforms across e-commerce,ERP,Rag AI,SchoolManagmentSoftware,CRM,HRM and real estate.',
                   'Currently Fullstack Developer at Webin, building products for agency clients.',
                   'Mentored 15+ aspiring developers while shipping AI-integrated platforms.',
                 ].map((item, i) => (
